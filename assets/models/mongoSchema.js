@@ -39,12 +39,12 @@ const ImageSchema = new mongoose.Schema({
 const ReviewSchema = new mongoose.Schema({
     siteID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'site_collection_tests'
+        ref: 'site_collection'
     },
     siteReviews: [{
         userID: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'user_collection_tests'
+            ref: 'user_collection'
         },
         rating: {
             type: Number,
@@ -64,7 +64,7 @@ const ReviewSchema = new mongoose.Schema({
 const SiteSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user_collection_tests',
+        ref: 'user_collection',
         required: true
     },
     siteName: String,
@@ -77,13 +77,13 @@ const SiteSchema = new mongoose.Schema({
     image: [ImageSchema],
     reviewID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'review_collection_tests'
+        ref: 'review_collection'
     }
 });
 //-------------------
 
 module.exports = {
-    UserModel: mongoose.model('user_collection_tests', UserSchema),
-    SiteModel: mongoose.model('site_collection_tests', SiteSchema),
-    ReviewModel: mongoose.model('review_collection_tests', ReviewSchema),
+    UserModel: mongoose.model('user_collection', UserSchema),
+    SiteModel: mongoose.model('site_collection', SiteSchema),
+    ReviewModel: mongoose.model('review_collection', ReviewSchema),
 };
