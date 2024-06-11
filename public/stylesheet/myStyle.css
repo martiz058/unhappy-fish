@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* button style */
+.btn-secondary {
+    background-color: #333;
+    border: none;
+}
+
+.mybtn:hover {
+    background-color: #222;
+    color: white;
+}
+
+/* Navbar */
+.myLogin {
+    color: white;
+}
+
+.myContainer {
+    background: white;
+    padding: 2em;
+    margin: 2em 0;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.myLogo-size {
+    width: 30px;
+    height: 30px;
+}
+
+.footer {
+    background-color: black;
+    color: grey;
+    padding: 1em 0;
+    position: relative;
+    font-size: 10px
+}
+
+
+.carousel-item img {
+    max-height: 500px;
+    width: auto;
+}

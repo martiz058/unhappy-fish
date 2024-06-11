@@ -1,0 +1,22 @@
+.hero {
+    background: url('/data/images/pexels-lum3n-44775-190294.jpg') no-repeat center center/cover;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1em;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0.5em 0;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 0.5em 0 1em 0;
+    max-width: 600px;
+}

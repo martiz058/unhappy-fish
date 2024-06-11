@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnhappyFish</title>
+    <link rel="icon" sizes="32x32" href="/data/images/shark.png" type=" image/png">
+
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--MapBox-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!--Custom-->
+    <link rel="stylesheet" href="/stylesheet/myStyle.css">
+
+    <!--JS possible Issue-->
+    <section>
+        <% function getRandomImage() { const max=imageUrls.length; const image=imageUrls[Math.floor(Math.random() *
+            (max))]; return image; } %>
+
+            <% const imageUrls=[ "/data/images/fish-0.png" , "/data/images/fish-1.png" , "/data/images/fish-2.png"
+                , "/data/images/fish-3.png" , "/data/images/fish-4.png" , "/data/images/fish-5.png"
+                , "/data/images/fish-6.png" , "/data/images/fish-7.png" , ]; %>
+    </section>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!--Navbar-->
+    <nav id="navbar" class="navbar sticky-top navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <div class="container-fluid m-1">
+            <a class="navbar-brand" href="/">
+                <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo" class="d-inline-block align-text-top">
+                UnHappyFish
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/locations">Locations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" aria-disabled="true">User Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Fishing Manuals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/locations/new">Upload</a>
+                    </li>
+                </ul>
+
+                <div class="myLogin mx-5">
+                    <% if (!isLogin) { %>
+                        <a class="nav-link" href=" /login">Login</a>
+                        <% } else { %>
+                            <a class="nav-link" href="/logout">Logout</a>
+                            <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--flash-->
+    <section>
+        <%- include('../partials/flash') -%>
+    </section>
+
+    <main class="m-5">
+        <!--Card-->
+        <section class="card">
+            <!-- Card header Image-->
+            <div class="card-header">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" style="background-color: grey;">
+                        <% if (site.image.length===0) { %>
+                            <div class="carousel-item active">
+                                <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
+                                    class="d-block img-fluid mx-auto" alt="No Image">
+                            </div>
+                            <% } else { %>
+                                <% site.image.forEach((el, index)=> { %>
+                                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                        <img src="<%=el.imageUrl%>" class="d-block img-fluid mx-auto"
+                                            alt="<%=el.imageName%>">
+                                    </div>
+                                    <% }) %>
+                                        <% } %>
+                    </div>
+                    <% if (site.image.length>1) { %>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        <% } %>
+                </div>
+            </div>
+
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <!-- Site Info -->
+                    <div class="col-md-6 border-end">
+                        <h5 class="card-title m-2">
+                            <b>
+                                <%= site.siteName %>
+                            </b>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                            <b>
+                                <%= site.locationInfo.properties.place_formatted %>
+                            </b>
+                        </h6>
+                        <hr>
+                        <p class="card-text">
+                            <%= site.description%>
+                        </p>
+                        <p class="blockquote-footer mt-1">
+                            <%=site.author%>
+                        </p>
+                        <div class=" d-flex justify-content-between">
+                            <% if (editFlag) { %>
+                                <a href="/locations/<%=site._id%>/edit" class="btn btn-primary mb-2">Edit</a>
+                                <form action="/locations/<%=site._id%>?_method=DELETE" method="post">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                <% } %>
+                        </div>
+                    </div>
+                    <!-- Map -->
+                    <div class="col-md-5 mx-5">
+                        <div id='map' data-map-token='<%= process.env.MAPBOX_TOKEN %>'
+                            data-coordinates='<%= JSON.stringify(site.locationInfo.geometry.coordinates) %>'
+                            style='width: 100%; height: 400px;'>
+                        </div>
+                        <div class="card-footer mt-4">
+                            <p class="card-text">
+                                <small class="text-body-secondary">
+                                    <%= site.locationInfo.properties.full_address %>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card footer -->
+            <div class="card-footer">
+                <p class="card-text">
+                    <small class="text-body-secondary">
+                        Posted: <%=site.date%>
+                    </small>
+                </p>
+            </div>
+        </section>
+
+        <!--Rating-->
+        <section class="mt-5">
+            <div class="card">
+                <!-- Card header Total Rating-->
+                <div class="card-header">
+                    <h5 class="mt-2">
+                        Reviews of <%= site.siteName %>
+                    </h5>
+                    <hr>
+                    <div>
+                        <% for( let index=1; index <=5; index++ ) { %>
+                            <% if (index <=site.averageRating) { %>
+                                <img src="/data/images/starfish-1.png" style="height: 2em;">
+                                <% } else { %>
+                                    <img src="/data/images/starfish-0.png" style="height: 2em;">
+                                    <%}%>
+                                        <% } %>
+                                            <p class="card-text my-2">
+                                                <%= site.averageRating %> average based on <%= reviews.length %>
+                                                        reviews.
+                                            </p>
+                    </div>
+                    <div>
+                        <% if (!isLogin) { %>
+                            <hr>
+                            <p>
+                                Sign in to post review
+                            </p>
+                            <a href="/login" class="btn btn-primary">SIGN IN</a>
+
+                            <% } else if(isLogin && reviewFlag){ %>
+                                <hr>
+                                <div class="row my-5">
+                                    <div class="col-sm-6">
+                                        <!--UI issue with star rating form check-->
+                                        <form class="needs-validation form-control"
+                                            action="/locations/<%= site._id%>/reviews" method="post" novalidate>
+                                            <div>
+                                                <label class="mt-4" for="rating">
+                                                    <img class="star" data-value="1" src="/data/images/starfish-0.png"
+                                                        style="height: 2em;">
+                                                    <img class="star" data-value="2" src="/data/images/starfish-0.png"
+                                                        style="height: 2em;">
+                                                    <img class="star" data-value="3" src="/data/images/starfish-0.png"
+                                                        style="height: 2em;">
+                                                    <img class="star" data-value="4" src="/data/images/starfish-0.png"
+                                                        style="height: 2em;">
+                                                    <img class="star" data-value="5" src="/data/images/starfish-0.png"
+                                                        style="height: 2em;">
+                                                </label>
+                                                <input class="form-control" type="hidden" id="rating" value="1"
+                                                    name="rating" min="1" max="5" required>
+                                                <div class=" valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid 'review'
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="reviewText"></label>
+                                                <textarea class="form-control" type="text" id="reviewText"
+                                                    name="reviewText" placeholder="Review" minlength="3" maxlength="300"
+                                                    required></textarea>
+                                                <div class=" valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    Please provide a valid 'review'
+                                                </div>
+                                            </div>
+
+                                            <div class=" d-flex justify-content-between">
+                                                <button type="submit" class="btn btn-primary"
+                                                    id="submitBtn">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <% } %>
+                    </div>
+                </div>
+
+                <!-- Card body User Reviews-->
+                <section>
+                    <% reviews.forEach(el=> { %>
+                        <div class="card m-3">
+                            <div class="card-body mb-0">
+                                <% for( let index=0; index < 5; index++ ) { %>
+                                    <% if (index < el.rating) { %>
+                                        <img src="/data/images/starfish-1.png" style="height: 2em;">
+                                        <% } else { %>
+                                            <img src="/data/images/starfish-0.png" style="height: 2em;">
+                                            <% } %>
+                                                <% } %>
+                            </div>
+                            <div class="card-body">
+                                <p>
+                                    <%= el.reviewText %>
+                                </p>
+                                <p class="blockquote-footer">
+                                    <%= el.username %>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">
+                                    <small class="text-body-secondary">
+                                        <%= el.date %>
+                                    </small>
+                                </p>
+                                <% if (isLogin && (userID.equals(el.userID)) ) { %>
+                                    <div class="d-flex justify-content-between">
+                                        <form action="/locations/<%=site._id%>/reviews/<%=el._id %>?_method=DELETE"
+                                            method="post">
+                                            <input type="hidden" value="-<%=el.rating %>" name="rating">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                    <%}%>
+                            </div>
+                        </div>
+                        <% }) %>
+                </section>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light mt-auto py-3">
+        <p>&copy; 2024 UnhappyFish. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+
+    <!--MapBox-->
+    <script src="/javascripts/displayMap.js"></script>
+
+    <!--Custom-->
+    <script src="/javascripts/myStarRating.js"></script>
+    <script src="/javascripts/checkFormBootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+    <h1>
+        Location
+    </h1>
+    <p>
+        <%= err.errorLocation %>
+    </p>
+    <h1>
+        StatusCode
+    </h1>
+    <p>
+        <%=err.statusCode%>
+    </p>
+
+    <h2>
+        message
+    </h2>
+    <p>
+        <%=err.message%>
+    </p>
+
+    <h3>
+        stack
+    </h3>
+    <p>
+        <%=err.stack%>
+    </p>

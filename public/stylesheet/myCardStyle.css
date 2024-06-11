@@ -1,0 +1,70 @@
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin: 2em 0;
+}
+
+.feature {
+    background: white;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 1em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.placeholder {
+    height: 200px;
+    background: none;
+    cursor: pointer;
+}
+
+/* Spinning effect */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-image {
+    animation: spin 15s linear infinite;
+    animation-play-state: paused;
+}
+
+.spin-image:hover {
+    animation-play-state: running;
+}
+
+.star:hover {
+    content: url('/data/images/starfish-1.png');
+}
+
+.image-display {
+    border: 2px solid #ccc;
+    height: auto;
+    width: 400px;
+    padding: 10px;
+    height: 300px;
+}
+
+
+.divider {
+    color: gray;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.divider::before,
+.divider::after {
+    flex: 1;
+    content: '';
+    padding: .1px;
+    background-color: grey;
+    margin: 5px;
+}

@@ -1,0 +1,37 @@
+.loop-slider {
+    .inner {
+        display: flex;
+        width: fit-content;
+        animation-name: loop;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: var(--direction);
+        animation-duration: var(--duration);
+    }
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 0 0.2rem;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    border-radius: 0.4rem;
+    padding: 0.7rem 1rem;
+    margin-right: 1rem;
+
+    span {
+        font-size: 1.2rem;
+        color: #64748b;
+    }
+}
+
+@keyframes loop {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
