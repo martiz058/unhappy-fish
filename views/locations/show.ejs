@@ -121,7 +121,7 @@
                                 <%= site.siteName %>
                             </b>
                         </h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                        <h6 class="card-subtitle m-2 text-body-secondary">
                             <b>
                                 <%= site.locationInfo.properties.place_formatted %>
                             </b>
@@ -133,7 +133,7 @@
                         <p class="blockquote-footer mt-1">
                             <%=site.author%>
                         </p>
-                        <div class=" d-flex justify-content-between">
+                        <div class=" d-flex justify-content-between me-auto">
                             <% if (editFlag) { %>
                                 <a href="/locations/<%=site._id%>/edit" class="btn btn-primary mb-2">Edit</a>
                                 <form action="/locations/<%=site._id%>?_method=DELETE" method="post">
