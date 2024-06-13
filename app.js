@@ -66,14 +66,10 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const store = new MongoDBStore({
-    url: db_url,
+    mongooseConnection: mongoose.connection,
     secret,
-    touchAfter: 24 * 60 * 60
+    touchAfter: 24 * 60 * 60 // Renew session only once per day
 });
-
-store.on("error", function (e) {
-    console.log("SESSION STORE ERROR", e)
-})
 
 const sessionConfig = {
     store,
@@ -83,11 +79,11 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
-        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        // secure: true, 
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
-}
+};
 
 app.use(session(sessionConfig));
 
