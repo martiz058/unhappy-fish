@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
 // Setup session store
-/*
+const MongoStore = require('connect-mongo');
 const store = MongoStore.create({
     mongoUrl: db_url,
     secret: process.env.SECRET || 'your_secret_key',
@@ -59,8 +59,8 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
-*/
 
+/*
 //sessions
 const MongoDBStore = require('connect-mongodb-session')(session);
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
@@ -86,6 +86,7 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
+*/
 
 // Passport plug-in
 app.use(passport.initialize());
