@@ -40,7 +40,7 @@
         <p>Your ultimate destination for all things fishing! Whether you're a beginner or a seasoned angler, our
             platform is designed to help you discover new fishing spots, share your own experiences, and connect
             with fellow fishing enthusiasts.</p>
-        <button class="btn btn-secondary" onclick="scrollToId('features')">Read More</button>
+        <button id="readMoreButton" class="btn btn-secondary">Read More</button>
     </section>
 
     <!--Navbar-->
@@ -108,7 +108,7 @@
                             <% for (let j=0; j < 2; j++) { %>
                                 <div class="col-md-6">
                                     <section class="features">
-                                        <div class="feature" onclick="scrollToId('showcase')">
+                                        <div class="feature scroll-to-showcase">
                                             <img class="placeholder <%= features[i * 2 + j].animation %>"
                                                 src="<%= features[i * 2 + j].image %>">
                                             <h2>
