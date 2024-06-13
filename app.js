@@ -1,4 +1,5 @@
 require('dotenv').config();
+console.log(process.env.NODE_ENV === 'production');
 
 const express = require('express');
 const session = require('express-session');
@@ -34,26 +35,29 @@ app.use(methodOverride('_method'));
 const MongoStore = require('connect-mongo');
 const store = MongoStore.create({
     mongoUrl: db_url,
-    secret: process.env.SESSION_SECRET || 'your_secret_key',
-    touchAfter: 24 * 60 * 60 // time period in seconds
+    secret: secret,
+    touchAfter: 24 * 60 * 60
 });
 
-store.on('error', function (e) {
-    console.log('SESSION STORE ERROR', e);
+store.on("error", function (e) {
+    console.error("SESSION STORE ERROR:", e);
 });
 
-// Use sessions with your Express app
-app.use(session({
+const sessionConfig = {
     store: store,
     name: 'session',
-    secret: process.env.SESSION_SECRET || 'your_secret_key',
+    secret: secret,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        secure: process.env.NODE_ENV === 'production',
+        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+        maxAge: 1000 * 60 * 60 * 24 * 7
     }
-}));
+};
+
+app.use(session(sessionConfig));
 
 // Passport plug-in
 app.use(passport.initialize());
