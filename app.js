@@ -35,7 +35,7 @@ app.use(methodOverride('_method'));
 const MongoStore = require('connect-mongo');
 const store = MongoStore.create({
     mongoUrl: db_url,
-    secret: secret,
+    secret: process.env.SECRET || 'your_secret_key',
     touchAfter: 24 * 60 * 60
 });
 
@@ -46,7 +46,7 @@ store.on("error", function (e) {
 const sessionConfig = {
     store: store,
     name: 'session',
-    secret: secret,
+    secret: process.env.SECRET || 'your_secret_key',
     resave: false,
     saveUninitialized: true,
     cookie: {
