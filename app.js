@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+/*
 // Setup session store
 const MongoStore = require('connect-mongo');
 const store = MongoStore.create({
@@ -59,34 +60,27 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
-
-/*
-//sessions
+*/
 const MongoDBStore = require('connect-mongodb-session')(session);
-const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const store = new MongoDBStore({
-    mongooseConnection: mongoose.connection,
-    secret,
-    touchAfter: 24 * 60 * 60 // Renew session only once per day
+    uri: db_url,
+    collection: 'sessions'
 });
 
-const sessionConfig = {
-    store,
-    name: 'session',
-    secret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        // secure: true, 
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
-};
+store.on('error', function (error) {
+    console.log(error);
+});
 
-app.use(session(sessionConfig));
-*/
+app.use(require('express-session')({
+    secret: 'This is a secret',
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    },
+    store: store,
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Passport plug-in
 app.use(passport.initialize());
