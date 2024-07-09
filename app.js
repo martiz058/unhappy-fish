@@ -32,35 +32,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-/*
-// Setup session store
-const MongoStore = require('connect-mongo');
-const store = MongoStore.create({
-    mongoUrl: db_url,
-    secret: process.env.SECRET || 'your_secret_key',
-    touchAfter: 24 * 60 * 60
-});
-
-store.on("error", function (e) {
-    console.error("SESSION STORE ERROR:", e);
-});
-
-const sessionConfig = {
-    store: store,
-    name: 'session',
-    secret: process.env.SECRET || 'your_secret_key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
-        maxAge: 1000 * 60 * 60 * 24 * 7
-    }
-};
-
-app.use(session(sessionConfig));
-*/
 const MongoDBStore = require('connect-mongodb-session')(session);
 
 const store = new MongoDBStore({
