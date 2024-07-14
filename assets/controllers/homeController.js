@@ -35,3 +35,9 @@ module.exports.getHome = async (req, res) => {
 
     res.render('home/home', { locations, features, imageUrls });
 };
+
+module.exports.sendEmail = (req, res) => {
+    console.log('gere');
+    console.log(req.body.name)
+    res.send(req.body);
+};

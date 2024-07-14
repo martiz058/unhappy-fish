@@ -7,6 +7,7 @@ const homeController = require('../controllers/homeController');
 
 // Route for getting all locations and posting a new site
 router.route('/')
-    .get(asyncHandler(homeController.getHome));
+    .get(asyncHandler(homeController.getHome))
+    .post(homeController.sendEmail);
 
 module.exports = router;

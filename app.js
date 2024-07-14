@@ -13,6 +13,12 @@ const helmet = require('helmet');
 
 // Connect to MongoDB
 const db_url = process.env.DB_URL || 'mongodb://localhost:27017/unhappyFish';
+if (process.env.DB_URL) {
+    console.log('deployed')
+}
+else {
+    console.log('testing')
+}
 
 mongoose.connect(db_url)
     .then(() => {

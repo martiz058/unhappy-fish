@@ -238,31 +238,54 @@
         </section>
 
         <!--Contact-->
-        <section class="container">
+        <section>
             <section class="contact">
-                <div class="contact-info">
-                    <h2>Contact Information</h2>
-                    <h3>Email:</h3>
-                    <p>info@fishingphotoblog.com</p>
-                    <div class="feature">
-                        <img class="placeholder" src="/data/images/work-in-progress.png">
+                <h2>Contact Us</h2>
+                <form class="needs-validation m-4" action="/" method="post" novalidate>
+                    <div>
+                        <label class="form-label" for="name"></label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Your Name"
+                            minlength="3" maxlength="30" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Name must be 3-30 characters
+                        </div>
                     </div>
-                    <!--
-                <h3>Phone:</h3>
-                <p>(123) 456-7890</p>
-                <h3>Address:</h3>
-                <p>123 Fishing Lane, Fishville, FL 12345</p>
-                -->
-                </div>
-                <form>
-                    <h2>Contact Us</h2>
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
+
+                    <div>
+                        <label class="form-label" for="email"></label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Your Email"
+                            minlength="3" maxlength="30" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            invalid email
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label" for="message"></label>
+                        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Your Message"
+                            minlength="3" maxlength="300" required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Message must be 3-30 characters
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+                    </div>
                 </form>
+
             </section>
         </section>
+
     </main>
 
     <!-- Footer -->
@@ -277,6 +300,7 @@
 
     <!--Custom-->
     <script src="/javascripts/scrollToId.js"></script>
+    <script src="/javascripts/checkFormBootstrap.js"></script>
 </body>
 
 </html>
