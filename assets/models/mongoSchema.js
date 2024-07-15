@@ -80,10 +80,23 @@ const SiteSchema = new mongoose.Schema({
         ref: 'review_collection'
     }
 });
+
+const StorySchema = new mongoose.Schema({
+    userID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'story_collection',
+        required: true
+    },
+    storyName: String,
+    description: String,
+    author: String,
+    date: String,
+})
 //-------------------
 
 module.exports = {
     UserModel: mongoose.model('user_collection', UserSchema),
     SiteModel: mongoose.model('site_collection', SiteSchema),
     ReviewModel: mongoose.model('review_collection', ReviewSchema),
+    StoryModel: mongoose.model('story_collection', StorySchema)
 };

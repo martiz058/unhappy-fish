@@ -37,7 +37,6 @@ module.exports.getHome = async (req, res) => {
 };
 
 module.exports.sendEmail = (req, res) => {
-    console.log('gere');
-    console.log(req.body.name)
-    res.send(req.body);
+    console.log('Email Sent');
+    res.redirect('/');
 };

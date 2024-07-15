@@ -1,7 +1,7 @@
 // Models
 const { SiteModel, ReviewModel } = require('../models/mongoSchema');
 
-//local functions/var
+// Local functions/var
 const currentDate = new Date();
 const { uploadImages } = require('../javascripts/cloudinary');
 const { findOrCreateReview } = require('../middleware/reviewMiddleware');

@@ -130,11 +130,13 @@ const homeRoutes = require('./assets/routes/homeRoutes');
 const userRoutes = require('./assets/routes/userRoutes');
 const locationRoutes = require('./assets/routes/locationRoutes');
 const reviewRoutes = require('./assets/routes/reviewRoutes');
+const storiesRoutes = require('./assets/routes/storiesRoutes');
 
 app.use('/', homeRoutes);
 app.use('/', userRoutes);
 app.use('/locations', locationRoutes);
 app.use('/locations/:id/reviews', reviewRoutes);
+app.use('/stories', storiesRoutes);
 
 // Page not Found
 app.all('*', (req, res) => {
