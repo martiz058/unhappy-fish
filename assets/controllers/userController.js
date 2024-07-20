@@ -17,7 +17,7 @@ module.exports.postRegister = async (req, res) => {
             res.redirect('/login');
         }
         req.flash('success', `${req.user.username} registered and logged in successfully!`);
-        res.redirect('/locations');
+        res.redirect('/');
     });
 };
 
@@ -28,7 +28,7 @@ module.exports.getLogin = (req, res) => {
 module.exports.postLogin = (req, res) => {
     const username = req.user.username;
     req.flash('success', `Welcome back!!, ${username}!`);
-    res.redirect('/locations');
+    res.redirect('/');
 };
 
 module.exports.getLogout = (req, res, next) => {
@@ -39,6 +39,6 @@ module.exports.getLogout = (req, res, next) => {
             return next(err);
         }
         req.flash('error', `Good Bye, ${username}`);
-        res.redirect('/locations');
+        res.redirect('/');
     });
 };

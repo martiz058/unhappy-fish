@@ -84,7 +84,7 @@ const SiteSchema = new mongoose.Schema({
 const StorySchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'story_collection',
+        ref: 'user_collection',
         required: true
     },
     storyName: String,

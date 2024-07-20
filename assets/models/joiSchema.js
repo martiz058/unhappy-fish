@@ -22,6 +22,11 @@ const SiteSchema = joi.object({
     }).required()
 }).required();
 
+const StorySchema = joi.object({
+    storyName: joi.string().min(3).max(1000).trim().required(),
+    description: joi.string().min(3).max(1000).trim().required()
+}).required();
+
 const ReviewSchema = joi.object({
     rating: joi.number().min(1).max(5).required(),
     reviewText: joi.string().min(3).max(300).required()
@@ -31,5 +36,6 @@ const ReviewSchema = joi.object({
 module.exports = {
     UserJoiModel: UserSchema,
     SiteJoiModel: SiteSchema,
-    ReviewJoiModel: ReviewSchema
+    ReviewJoiModel: ReviewSchema,
+    StoryJoiModel: StorySchema
 };
