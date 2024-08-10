@@ -231,23 +231,19 @@
                         <div class="mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    <%= stories[i].storyName.length> 30 ?
-                                        stories[0].storyName.substring(0,
-                                        30) +
-                                        '...'
-                                        :
-                                        stories[0].storyName %>
+                                    <%=stories[i].storyName %>
                                 </h5>
                                 <p class="card-text">
-                                    <%= stories[i].description.length> 75 ?
+                                    <%= stories[i].description.length> 250 ?
                                         stories[i].description.substring(0,
-                                        75) +
+                                        250) +
                                         '...'
                                         :
                                         stories[i].description %>
                                 </p>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </section>
                 <%}%>
@@ -308,7 +304,7 @@
                 <%}%>
 
                     <div class="d-flex justify-content-center my-3">
-                        <a href="/stories" class="btn btn-secondary">View all</a>
+                        <a href="/manuals" class="btn btn-secondary">View all</a>
                     </div>
         </section>
 

@@ -104,56 +104,22 @@
 
         <section class="container">
             <% for(let i=0; i < stories.length; i++){%>
-                <% if (i%2==0) { %>
-                    <section class="myContainer">
-                        <div class="row mt-3">
-                            <div class="mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%= stories[i].storyName.length> 30 ?
-                                            stories[i].storyName.substring(0,
-                                            30) + '...':
-                                            stories[i].storyName %>
-                                    </h5>
-                                    <p class="card-text">
-                                        <%= stories[i].description.length> 75 ?
-                                            stories[i].description.substring(0,
-                                            75) + '...':
-                                            stories[i].description %>
-                                    </p>
-                                </div>
+                <section class="myContainer">
+                    <div class="row mt-3">
+                        <div class="mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%=stories[i].storyName %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= stories[i].description %>
+                                </p>
                             </div>
                         </div>
-                        </div>
-                    </section>
-                    <% } else { %>
-                        <section class="mx-5">
-                            <div class="row mt-3">
-                                <div class="mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <%= stories[0].storyName.length> 30 ?
-                                                stories[0].storyName.substring(0,
-                                                30) +
-                                                '...'
-                                                :
-                                                stories[0].storyName %>
-                                        </h5>
-                                        <p class="card-text">
-                                            <%= stories[0].description.length> 75 ?
-                                                stories[0].description.substring(0,
-                                                75) +
-                                                '...'
-                                                :
-                                                stories[0].description %>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </section>
-                        <%}%>
-                            <%}%>
+                    </div>
+                    </div>
+                </section>
+                <%}%>
         </section>
 
         <!--Pagination-->
