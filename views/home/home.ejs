@@ -146,7 +146,7 @@
             </div>
         </section>
 
-        <!--showcase-->
+        <!--showcase Sites-->
         <section id="showcase" class="container my-5">
             <div class="d-flex flex-column align-items-center mt-5">
                 <h1>
@@ -202,6 +202,116 @@
 
         </section>
 
+        <!--showcase Story-->
+        <section id="showcase" class="myContainer my-5">
+            <div class="d-flex flex-column align-items-center mt-5">
+                <h1>
+                    <b>Community Stories</b>
+                </h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ut quas, tempore minima error libero at
+                    molestias unde, labore reiciendis blanditiis?
+                </p>
+            </div>
+
+            <!--Issue with small screens-->
+            <div class="container">
+                <div class="row">
+                    <% for(let i=0; i < 6; i++) {%>
+                        <div class="col-md-2">
+                            <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
+                        </div>
+                        <%}%>
+                </div>
+                <hr>
+            </div>
+
+            <% for(let i=0; i < stories.length; i++){%>
+                <section class="myContainer">
+                    <div class="row mt-3">
+                        <div class="mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= stories[i].storyName.length> 30 ?
+                                        stories[0].storyName.substring(0,
+                                        30) +
+                                        '...'
+                                        :
+                                        stories[0].storyName %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= stories[i].description.length> 75 ?
+                                        stories[i].description.substring(0,
+                                        75) +
+                                        '...'
+                                        :
+                                        stories[i].description %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <%}%>
+
+                    <div class="d-flex justify-content-center my-3">
+                        <a href="/stories" class="btn btn-secondary">View all</a>
+                    </div>
+        </section>
+
+        <!--Fishing Manuals-->
+        <section class="container">
+            <div class="d-flex flex-column align-items-center mt-5">
+                <h1>
+                    <b>Manuals</b>
+                </h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laboriosam amet voluptatem recusandae
+                    omnis eos iusto dolorem aspernatur laborum.
+                </p>
+            </div>
+
+            <!--Issue with small screens-->
+            <div class="container">
+                <div class="row">
+                    <% for(let i=0; i < 6; i++) {%>
+                        <div class="col-md-2">
+                            <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
+                        </div>
+                        <%}%>
+                </div>
+                <hr>
+            </div>
+
+            <% for(let i=0; i < stories.length; i++){%>
+                <section class="myContainer">
+                    <div class="row mt-3">
+                        <div class="mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= stories[i].storyName.length> 30 ?
+                                        stories[0].storyName.substring(0,
+                                        30) +
+                                        '...'
+                                        :
+                                        stories[0].storyName %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= stories[i].description.length> 75 ?
+                                        stories[i].description.substring(0,
+                                        75) +
+                                        '...'
+                                        :
+                                        stories[i].description %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <%}%>
+
+                    <div class="d-flex justify-content-center my-3">
+                        <a href="/stories" class="btn btn-secondary">View all</a>
+                    </div>
+        </section>
+
         <!--About US-->
         <section class="myContainer">
             <div class="row">
@@ -249,7 +359,7 @@
         </section>
 
         <!--Contact-->
-        <section>
+        <section class="container">
             <section class="contact">
                 <h2>Contact Us</h2>
                 <form class="needs-validation m-4" action="/" method="post" novalidate>

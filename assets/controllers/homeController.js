@@ -1,11 +1,14 @@
 // Models
-const { SiteModel } = require('../models/mongoSchema');
+const { SiteModel, StoryModel } = require('../models/mongoSchema');
 
 module.exports.getHome = async (req, res) => {
     // Pagination
     const itemsPerPage = 4;
     const locations = await SiteModel.find({})
         .limit(itemsPerPage);
+    const stories = await StoryModel.find({})
+        .limit(itemsPerPage / 2);
+
 
     // content
     const features = [{
@@ -15,11 +18,11 @@ module.exports.getHome = async (req, res) => {
         image: "/data/images/starfish-0.png", title: "Rate Locations",
         text: "Rate and discover the best fishing spots.", animation: "star"
     }, {
-        image: "/data/images/work-in-progress.png", title: "User Stories",
+        image: "/data/images/fish-net.png", title: "User Stories",
         text: "Read and share stories from fellow fishers."
     }, {
-        image: "/data/images/work-in-progress.png"
-        , title: "Fishing Manuals", text: "Learn new techniques and improve your skills."
+        image: "/data/images/maritime-laws.png", title: "Fishing Manuals",
+        text: "Learn new techniques and improve your skills."
     }];
 
     const imageUrls = [
@@ -33,7 +36,7 @@ module.exports.getHome = async (req, res) => {
         "/data/images/fish-7.png",
     ];
 
-    res.render('home/home', { locations, features, imageUrls });
+    res.render('home/home', { locations, stories, features, imageUrls });
 };
 
 module.exports.sendEmail = (req, res) => {
