@@ -1,0 +1,69 @@
+/* Feature Card Styling */
+.feature-card {
+    font-family: 'Oswald', sans-serif;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: center;
+    height: 100%;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the feature card */
+.feature-card:hover {
+    background-color: #000000;
+    /* Change to black on hover */
+}
+
+/* Card Title and Text Styling for hover effect */
+.feature-card:hover .card-title h3,
+.feature-card:hover .card-text p {
+    color: #ffffff;
+}
+
+/* Card Content Styling */
+.feature-card .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Image Container Styling */
+.feature-card .card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Image Styling */
+.feature-card .card-image img {
+    width: 56px;
+    height: 56px;
+    border: none;
+}
+
+/* Hide hover image by default */
+.feature-card .hover-image {
+    display: none;
+}
+
+/* Show hover image on hover */
+.feature-card:hover .default-image {
+    display: none;
+}
+
+.feature-card:hover .hover-image {
+    display: block;
+}
+
+/* Text Styling */
+.feature-card .card-text {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}

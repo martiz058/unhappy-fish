@@ -1,3 +1,6 @@
 .env
 node_modules
 0_seeds
+play.ejs
+play.css
+play.js

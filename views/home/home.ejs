@@ -11,403 +11,537 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <!--Custom-->
-    <link rel="stylesheet" href="/stylesheet/myContactStyle.css">
-    <link rel="stylesheet" href="/stylesheet/myCardStyle.css">
-    <link rel="stylesheet" href="/stylesheet/myHeroStyle.css">
-    <link rel="stylesheet" href="/stylesheet/myStyle.css">
-
-    <!--JS possible Issue-->
-    <section>
-        <% function getRandomImage() { const max=imageUrls.length; const image=imageUrls[Math.floor(Math.random() *
-            (max))]; return image; } %>
-
-            <% const imageUrls=[ "/data/images/fish-0.png" , "/data/images/fish-1.png" , "/data/images/fish-2.png"
-                , "/data/images/fish-3.png" , "/data/images/fish-4.png" , "/data/images/fish-5.png"
-                , "/data/images/fish-6.png" , "/data/images/fish-7.png" , ]; %>
-    </section>
+    <link rel="stylesheet" href="/stylesheet/commonStyle.css">
+    <link rel="stylesheet" href="/stylesheet/navbarStyle.css">
+    <link rel="stylesheet" href="/stylesheet/heroStyle.css">
+    <link rel=" stylesheet" href="/stylesheet/ourFeaturesStyle.css">
+    <link rel="stylesheet" href="/stylesheet/footerStyle.css">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-    <!--flash-->
-    <section>
-        <%- include('../partials/flash') -%>
-    </section>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Unhappy<b>Fish</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    <!--hero-->
-    <section class="hero">
-        <h1>Welcome to UnHappyFish</h1>
-        <p>Your ultimate destination for all things fishing! Whether you're a beginner or a seasoned angler, our
-            platform is designed to help you discover new fishing spots, share your own experiences, and connect
-            with fellow fishing enthusiasts.</p>
-        <button id="readMoreButton" class="btn btn-secondary">Read More</button>
-    </section>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/locations">Locations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/stories">Stories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page">Fishing Manuals</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Upload
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/locations/new">Upload Spot</a></li>
+                                <li><a class="dropdown-item" href="/stories/new">Share Story</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 
-    <!--Navbar-->
-    <nav id="navbar" class="navbar sticky-top navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid m-1">
-            <a class="navbar-brand" href="/">
-                <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo" class="d-inline-block align-text-top">
-                UnHappyFish
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/locations">Locations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/stories">Stories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Fishing Manuals</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Upload
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/locations/new">Upload Spot</a></li>
-                            <li><a class="dropdown-item" href="/stories/new">Share Story</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="myLogin mx-5">
-                    <% if (!isLogin) { %>
-                        <a class="nav-link" href=" /login">Login</a>
-                        <% } else { %>
-                            <a class="nav-link" href="/logout">Logout</a>
-                            <% } %>
+                    <span class="navbar-text">
+                        <% if (!isLogin) { %>
+                            <a class="nav-link" href=" /login">
+                                <b>Sign Up</b>
+                            </a>
+                            <% } else { %>
+                                <a class="nav-link" href="/logout">
+                                    <b>Sign Out</b>
+                                </a>
+                                <% } %>
+                    </span>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <main class="flex-grow-1">
-        <!--features-->
-        <section id="features" class="myContainer mt-0">
-            <div class="container">
-                <div>
-                    <h3 class="mt-5">
-                        <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
-                        Join Us
-                        <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
-                    </h3>
-                    <p>We invite you to join the UnHappyFish community today. Sign up now to start sharing your fishing
-                        experiences, discover new fishing spots, and connect with fellow anglers. Whether you're a
-                        novice or
-                        an
-                        expert, there's always something new to learn and share in the world of fishing.
-                    </p>
-                    <hr>
-                </div>
+        <!--hero-->
+        <section class="hero hero-container">
+            <h1>Welcome to <b>UnHappyFish</b></h1>
+            <p>Your ultimate destination for all things fishing! Whether you're a beginner or a seasoned angler, our
+                platform is designed to help you discover new fishing spots, share your own experiences, and connect
+                with fellow fishing enthusiasts.</p>
+            <button id="readMoreButton" class="btn btn-secondary">Read More</button>
+        </section>
 
-                <div class="container">
-                    <% for (let i=0; i < 2; i++) { %>
-                        <div class="row">
-                            <% for (let j=0; j < 2; j++) { %>
-                                <div class="col-md-6">
-                                    <section class="features">
-                                        <div class="feature scroll-to-showcase">
-                                            <img class="placeholder <%= features[i * 2 + j].animation %>"
-                                                src="<%= features[i * 2 + j].image %>">
-                                            <h2>
-                                                <%= features[i * 2 + j].title %>
-                                            </h2>
-                                            <p>
-                                                <%= features[i * 2 + j].text %>
-                                            </p>
-                                        </div>
-                                    </section>
+        <!--About US-->
+        <section class="about-section container-one">
+            <!-- Section Title -->
+            <div class="banner-container">
+                <h1>Who We Our</h1>
+                <p>
+                    We are a community of passionate anglers dedicated to sharing fishing spots,
+                    stories,
+                    and tips to make your fishing experiences memorable.
+                </p>
+            </div>
+            <!--Info card-->
+            <div class="info-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-content">
+                            <div class="info-title">
+                                <h4>About Us</h4>
+                            </div>
+                            <div class="info-details">
+                                <div class="info-item">
+                                    <h3>Our Mission</h3>
+                                    <p>At UnhappyFish, we aim to create a vibrant community of fishing enthusiasts
+                                        who can share
+                                        their experiences, knowledge, and love for fishing. We believe in fostering
+                                        a supportive
+                                        and
+                                        inclusive environment where everyone can learn and grow.</p>
                                 </div>
-                                <% } %>
+                                <div class="info-item">
+                                    <h3>Our Vision</h3>
+                                    <p>We envision a world where fishing enthusiasts from all corners of the globe
+                                        can come
+                                        together
+                                        to connect, share, and celebrate their passion for fishing. Through our
+                                        platform, we
+                                        strive
+                                        to inspire and educate anglers of all ages and skill levels.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h3>Our Values</h3>
+                                    <ul>
+                                        <li><b>Community:</b> We believe in the power of community and the
+                                            importance of
+                                            connecting
+                                            with others who share our passion.</li>
+                                        <li><b>Inclusivity:</b> We welcome anglers of all backgrounds and skill
+                                            levels to join
+                                            our
+                                            platform and share their experiences.</li>
+                                        <li><b>Education:</b> We are committed to providing valuable resources and
+                                            information
+                                            to
+                                            help anglers improve their skills and knowledge.</li>
+                                        <li><b>Sustainability:</b> We advocate for responsible fishing practices and
+                                            the
+                                            conservation of our natural resources.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <% } %>
-                </div>
-
-                <div class="m-4">
-                    <% if (!isLogin) { %>
-                        <a class="btn btn-secondary" href="/register">Sign Up</a>
-                        <% } else { %>
-                            <a class="btn btn-secondary" aria-current="page" href="/locations">Show Sites</a>
-                            <% } %>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <!-- Row 1: Portrait and Landscape Images -->
+                            <div class="col-6">
+                                <div class="info-image-container portrait">
+                                    <img src="/data/images/pexels-olof-nyman-366625-988622.jpg"
+                                        alt="pexels-olof-nyman-366625-988622.jpg">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="info-image-container landscape">
+                                            <img src="/data/images/pexels-quang-nguyen-vinh-222549-2131967.jpg"
+                                                alt="pexels-quang-nguyen-vinh-222549-2131967.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="info-image-container landscape">
+                                            <img src="/data/images/fish-3.png" alt="fish-3.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Row 2: Additional Landscape Image -->
+                            <div class="col-12">
+                                <div class="info-image-container landscape">
+                                    <img src="/data/images/pexels-nihat-12231-69224.jpg"
+                                        alt="pexels-nihat-12231-69224.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!--showcase Sites-->
-        <section id="showcase" class="container my-5">
-            <div class="d-flex flex-column align-items-center mt-5">
-                <h1>
-                    <b>Fishing Locations</b>
-                </h1>
-                <p>Explore the serene beauty of our handpicked fishing locations. Immerse yourself in the tranquility of
-                    nature while casting your line into crystal-clear waters.
+        <!--Features-->
+        <section class="ourFeatures-section container-two">
+            <!-- Section Title -->
+            <div class="banner-container">
+                <h1>Join Us</h1>
+                <p>
+                    Sign up now to start sharing your fishing experiences, discover new fishing spots, and connect
+                    with fellow anglers. Whether you're a novice or an expert, there's always something new to learn
+                    and share in the world of fishing.
                 </p>
             </div>
 
-            <!--Issue with small screens-->
-            <div class="container">
-                <div class="row">
-                    <% for(let i=0; i < 6; i++) {%>
-                        <div class="col-md-2">
-                            <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
+            <!-- Features Cards -->
+            <div class="row mb-5">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="card-title">
+                            <h3>Discover Locations</h3>
                         </div>
-                        <%}%>
+                        <div class="card-content">
+                            <div class="card-image-container">
+                                <div class="card-image default-image">
+                                    <img src="/data/images/location-outline.png" alt="location-outline.png">
+                                </div>
+                                <div class="card-image hover-image">
+                                    <img src="/data/images/location.png" alt="location.png">
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <p>Rate and discover the best fishing spots.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <hr>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="card-title">
+                            <h3>Share Stories</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-image-container">
+                                <div class="card-image default-image">
+                                    <img src="/data/images/messages-outline.png" alt="location-outline.png">
+                                </div>
+                                <div class="card-image hover-image">
+                                    <img src="/data/images/messages.png" alt="location.png">
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <p>Read and share fishing experiences with the community.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="card-title">
+                            <h3>Basic Techniques</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-image-container">
+                                <div class="card-image default-image">
+                                    <img src="/data/images/maritime-laws-outline.png" alt="location-outline.png">
+                                </div>
+                                <div class="card-image hover-image">
+                                    <img src="/data/images/maritime-laws.png" alt="location.png">
+                                </div>
+                            </div>
+                            <div class="card-text">
+                                <p>Learn new techniques and improve your skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sign Up Button -->
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">Sign Up Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="location-gallery container-one">
+            <!-- Section Title -->
+            <div class="banner-container">
+                <h1>Fishing Locations</h1>
+                <p>
+                    Explore the serene beauty of our communities fishing locations. Immerse yourself in the tranquility
+                    of nature while casting your line into crystal-clear waters.
+                </p>
             </div>
 
-            <div class="row mt-3">
-                <% for (site of locations) { %>
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <% if (site.image.length==0) { %>
-                                <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
-                                    class="card-img-top" alt="No Image" height="275">
-                                <% } else { %>
-                                    <img src="<%=site.image[0].imageUrl %>" class="card-img-top"
-                                        alt="<%=site.image[0].imageName %>" height="275">
-                                    <% } %>
-                                        <div class="card-body">
-                                            <h5 class="card-title">
-                                                <%= site.siteName %>
-                                            </h5>
-                                            <h6 class="card-subtitle mb-2 text-body-secondary">
-                                                <%= site.locationInfo.properties.place_formatted %>
-                                            </h6>
-                                            <a href="/locations/<%=site._id%>" class="btn btn-primary">
-                                                <%=site.siteName%>
-                                            </a>
-                                        </div>
+            <!-- gallery -->
+            <div class="image-collage row mb-4">
+                <% for (let index=0; index < 6; index++) { %>
+                    <div class="col-6">
+                        <div class="flip-card mb-4">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="/data/images/pexels-nihat-12231-69224.jpg" alt="Landscape Image">
+                                </div>
+                                <div class="flip-card-back">
+                                    <h1 class="common-card-title">Title Here</h1>
+                                    <h2 class="common-card-subtitle">Subtitle Here</h2>
+                                    <p class="common-card-text">Body text goes here. Provide a brief description or
+                                        additional information about
+                                        the image or location.</p>
+                                    <p class="common-card-footer">Footer or body-subtitle text here.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <% } %>
             </div>
-
-            <div class="d-flex justify-content-center my-3">
-                <a href="/locations" class="btn btn-secondary">View all</a>
+            <!-- View More Button -->
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">View All</button>
+                </div>
             </div>
-
         </section>
 
-        <!--showcase Story-->
-        <section id="showcase" class="myContainer my-5">
-            <div class="d-flex flex-column align-items-center mt-5">
-                <h1>
-                    <b>Community Stories</b>
-                </h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum ut quas, tempore minima error libero at
-                    molestias unde, labore reiciendis blanditiis?
+        <section class="community-stories container-two">
+            <!-- Section Title -->
+            <div class="banner-container">
+                <h1>Community Stories</h1>
+                <p>
+                    Share your personal fishing adventures, connect with other
+                    anglers, and explore a diverse array of experiences and tips from the UnHappyFish community.
                 </p>
             </div>
 
-            <!--Issue with small screens-->
-            <div class="container">
-                <div class="row">
-                    <% for(let i=0; i < 6; i++) {%>
-                        <div class="col-md-2">
-                            <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
-                        </div>
-                        <%}%>
+            <!-- stories gallery -->
+            <div>
+                <div class="col-12">
+                    <div class="drop-down-card">
+                        <button class="toggle-text"><i class="fas fa-chevron-down"></i></button>
+                        <h1 class="drop-down-title common-card-title">Title</h1>
+                        <p class="drop-down-text common-card-text">
+                            Body text goes here. Provide a brief description or additional information.
+                            <!-- Assume the body text contains 500 characters -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae
+                            vestibulum
+                            vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Curabitur egestas tincidunt
+                            tortor, at sagittis lorem fermentum nec. Vivamus id erat nec orci posuere blandit. Sed
+                            varius
+                            est id convallis feugiat. Suspendisse potenti. Pellentesque habitant morbi tristique
+                            senectus et
+                            netus et malesuada fames ac turpis egestas. Aenean a urna vel sem auctor aliquam. Lorem
+                            ipsum
+                            dolor sit amet, consectetur adipisicing elit. Illo, maiores? Quia placeat veniam ad
+                            mollitia,
+                            eveniet odio, excepturi vitae cupiditate sunt sit autem voluptatem unde blanditiis dolores
+                            natus
+                            consequuntur adipisci? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+                            sequi
+                            quibusdam, tempore praesentium officiis vel quas delectus eius commodi ea ratione soluta ex
+                            odio, quasi officia, quaerat laborum eligendi culpa?
+                        </p>
+                        <p class="drop-down-footer common-card-footer">Footer text here.</p>
+                    </div>
                 </div>
-                <hr>
+
+                <div class="col-12">
+                    <div class="drop-down-card">
+                        <button class="toggle-text"><i class="fas fa-chevron-down"></i></button>
+                        <h1 class="drop-down-title common-card-title">Title</h1>
+                        <p class="drop-down-text common-card-text">
+                            Body text goes here. Provide a brief description or additional information.
+                            <!-- Assume the body text contains 500 characters -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae
+                            vestibulum
+                            vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Curabitur egestas tincidunt
+                            tortor, at sagittis lorem fermentum nec. Vivamus id erat nec orci posuere blandit. Sed
+                            varius
+                            est id convallis feugiat. Suspendisse potenti. Pellentesque habitant morbi tristique
+                            senectus et
+                            netus et malesuada fames ac turpis egestas. Aenean a urna vel sem auctor aliquam. Lorem
+                            ipsum
+                            dolor sit amet, consectetur adipisicing elit. Illo, maiores? Quia placeat veniam ad
+                            mollitia,
+                            eveniet odio, excepturi vitae cupiditate sunt sit autem voluptatem unde blanditiis dolores
+                            natus
+                            consequuntur adipisci? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+                            sequi
+                            quibusdam, tempore praesentium officiis vel quas delectus eius commodi ea ratione soluta ex
+                            odio, quasi officia, quaerat laborum eligendi culpa?
+                        </p>
+                        <p class="drop-down-footer common-card-footer">Footer text here.</p>
+                    </div>
+                </div>
             </div>
-
-            <% for(let i=0; i < stories.length; i++){%>
-                <section class="myContainer">
-                    <div class="row mt-3">
-                        <div class="mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%=stories[i].storyName %>
-                                </h5>
-                                <p class="card-text">
-                                    <%= stories[i].description.length> 250 ?
-                                        stories[i].description.substring(0,
-                                        250) +
-                                        '...'
-                                        :
-                                        stories[i].description %>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </section>
-                <%}%>
-
-                    <div class="d-flex justify-content-center my-3">
-                        <a href="/stories" class="btn btn-secondary">View all</a>
-                    </div>
+            <!-- View More Button -->
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">View All</button>
+                </div>
+            </div>
         </section>
 
-        <!--Fishing Manuals-->
-        <section class="container">
-            <div class="d-flex flex-column align-items-center mt-5">
-                <h1>
-                    <b>Manuals</b>
-                </h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor laboriosam amet voluptatem recusandae
-                    omnis eos iusto dolorem aspernatur laborum.
+        <section class="fishing-manual container-one">
+            <!-- Section Title -->
+            <div class="banner-container">
+                <h1>Fishing Basics</h1>
+                <p>
+                    Explore our Manuals section for comprehensive guides and tutorials that cover everything from basic
+                    fishing techniques to advanced angling strategies.
                 </p>
             </div>
-
-            <!--Issue with small screens-->
-            <div class="container">
-                <div class="row">
-                    <% for(let i=0; i < 6; i++) {%>
-                        <div class="col-md-2">
-                            <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo">
-                        </div>
-                        <%}%>
+            <!-- Equipment Basics -->
+            <div class="info-content">
+                <div class="info-title">
+                    <h4>Equipment Basics</h4>
                 </div>
-                <hr>
+                <div class="info-details">
+                    <div class="info-item">
+                        <h3>Rod and Reel</h3>
+                        <ul>
+                            <li><b>Spinning Rod and Reel:</b> Ideal for beginners due to their versatility and ease of
+                                use.</li>
+                            <li><b>Baitcasting Rod and Reel:</b> Offers better control and accuracy, suitable for
+                                experienced anglers.</li>
+                        </ul>
+                    </div>
+                    <div class="info-item">
+                        <h3>Line</h3>
+                        <ul>
+                            <li><b>Monofilament Line:</b> Stretchy and forgiving, great for beginners.</li>
+                            <li><b>Braided Line:</b> Strong with no stretch, offers better sensitivity for experienced
+                                anglers.</li>
+                        </ul>
+                    </div>
+                    <div class="info-item">
+                        <h3>Hooks, Sinkers, and Floats</h3>
+                        <ul>
+                            <li><b>Hooks:</b> Various sizes and types; choose based on the fish species.</li>
+                            <li><b>Sinkers:</b> Add weight to the line, helping the bait sink to the desired depth.</li>
+                            <li><b>Floats/Bobbers:</b> Keep the bait suspended and indicate when a fish bites.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <% for(let i=0; i < stories.length; i++){%>
-                <section class="myContainer">
-                    <div class="row mt-3">
-                        <div class="mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= stories[i].storyName.length> 30 ?
-                                        stories[0].storyName.substring(0,
-                                        30) +
-                                        '...'
-                                        :
-                                        stories[0].storyName %>
-                                </h5>
-                                <p class="card-text">
-                                    <%= stories[i].description.length> 75 ?
-                                        stories[i].description.substring(0,
-                                        75) +
-                                        '...'
-                                        :
-                                        stories[i].description %>
-                                </p>
-                            </div>
-                        </div>
+            <!-- Basic Techniques -->
+            <div class="info-content">
+                <div class="info-title">
+                    <h4>Basic Techniques</h4>
+                </div>
+                <div class="info-details">
+                    <div class="info-item">
+                        <h3>Casting</h3>
+                        <p>Practice accurate casting to place your bait where fish are likely to be. Use overhead or
+                            sidearm casts depending on the environment.</p>
                     </div>
-                </section>
-                <%}%>
-
-                    <div class="d-flex justify-content-center my-3">
-                        <a href="/manuals" class="btn btn-secondary">View all</a>
+                    <div class="info-item">
+                        <h3>Retrieving</h3>
+                        <p>Vary the speed and pattern of your retrieve to mimic the natural movement of prey. Pause
+                            intermittently to entice fish.</p>
                     </div>
+                    <div class="info-item">
+                        <h3>Setting the Hook</h3>
+                        <p>When you feel a bite, quickly and firmly lift the rod to set the hook in the fish's mouth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- View More Button -->
+            <div class="row mb-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary">View All</button>
+                </div>
+            </div>
         </section>
 
-        <!--About US-->
-        <section class="myContainer">
+        <section class="contact-us container-two">
+            <!-- Section Title -->
+            <div class="banner-container">
+                <h1>Contact Us</h1>
+                <p>
+                    Have any questions, feedback, or just want to say hello? Fill out the form below to send us a
+                    message.
+                </p>
+            </div>
             <div class="row">
-                <div class="col-md-6"
-                    style="background: url(/data/images/pexels-olof-nyman-366625-988622.jpg) no-repeat center center/cover;">
-                </div>
-
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>About Us</h2>
-                            <p>Welcome to UnHappyFish, your ultimate destination for all things fishing! Our platform is
-                                designed for
-                                fishing enthusiasts of all levels, from beginners to seasoned anglers. Whether you're
-                                looking to
-                                discover new fishing spots, share your own fishing experiences, or connect with a
-                                community
-                                of like-minded
-                                individuals, UnHappyFish has something for you.
-                            </p>
-                        </div>
+                <!-- Column 1: Portrait Image -->
+                <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                    <div class="info-image-container">
+                        <img src="/data/images/fish-0.png" alt="fish-0.png" class="info-portrait">
                     </div>
-                    <br>
-                    <br>
-                    <hr>
-                    <br>
-                    <br>
-                    <div class="row mb-0">
-                        <div class="col-md-12">
-                            <h3>Our Mission</h3>
-                            <p>At UnHappyFish, our mission is to create a comprehensive and engaging platform for
-                                fishing
-                                enthusiasts.
-                                We aim to provide valuable resources, foster a supportive community, and promote the joy
-                                of
-                                fishing. Our
-                                goal is to help you become a better angler, whether you're learning how to tie a knot,
-                                choosing the right
-                                bait, or finding the perfect fishing spot.
-                            </p>
-                        </div>
+                </div>
+                <!-- Column 2: Contact Form -->
+                <div class="col-lg-6 col-md-4 col-sm-12">
+                    <div class="contact-form info-content">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="info-title">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="info-title">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="info-title">Message</label>
+                                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Column 3: Portrait Image -->
+                <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                    <div class="info-image-container">
+                        <img src="/data/images/fish-2.png" alt="fish-2.png" class="info-portrait">
                     </div>
                 </div>
             </div>
         </section>
-
-        <!--Contact-->
-        <section class="container">
-            <section class="contact">
-                <h2>Contact Us</h2>
-                <form class="needs-validation m-4" action="/" method="post" novalidate>
-                    <div>
-                        <label class="form-label" for="name"></label>
-                        <input class="form-control" type="text" name="name" id="name" placeholder="Your Name"
-                            minlength="3" maxlength="30" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Name must be 3-30 characters
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="form-label" for="email"></label>
-                        <input class="form-control" type="email" name="email" id="email" placeholder="Your Email"
-                            minlength="3" maxlength="30" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            invalid email
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="form-label" for="message"></label>
-                        <textarea class="form-control" name="message" id="message" rows="5" placeholder="Your Message"
-                            minlength="3" maxlength="300" required></textarea>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Message must be 3-30 characters
-                        </div>
-                    </div>
-
-                    <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
-                    </div>
-                </form>
-
-            </section>
-        </section>
-
     </main>
 
-    <!-- Footer -->
-    <footer class="footer bg-dark text-light mt-auto py-3">
-        <p>&copy; 2024 UnhappyFish. All rights reserved.</p>
+    <footer class="footer container-one">
+        <!-- Quick Links 
+        <div class="row">
+       
+            <div class="col-lg-4 col-md-6 col-sm-12 footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <div class="col-lg-4 col-md-6 col-sm-12 footer-section">
+                <h4>Contact Us</h4>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@unhappyfish.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Fishing Lane, Fish City, FC 12345</li>
+                </ul>
+            </div>
+         
+            <div class="col-lg-4 col-md-12 col-sm-12 footer-section">
+                <h4>Follow Us</h4>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p class="footer-slogan">Connecting anglers around the world. Fish better, together.</p>
+            </div>
+        </div>
+    -->
+        <div class="footer-bottom text-center">
+            <p>&copy; 2024 UnhappyFish. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
@@ -416,8 +550,51 @@
         </script>
 
     <!--Custom-->
-    <script src="/javascripts/scrollToId.js"></script>
-    <script src="/javascripts/checkFormBootstrap.js"></script>
+    <script>
+        // Updated: JavaScript to adjust navbar transparency and animation
+        document.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            const heroSection = document.querySelector('.hero');
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            const scrollPosition = window.scrollY;
+            const opacity = Math.min((scrollPosition - heroBottom) / 300, 1); // Adjust the divisor to control speed
+
+            if (scrollPosition < heroBottom) {
+                // Navbar is over the hero section
+                navbar.style.backgroundColor = `rgba(0, 0, 0, ${0})`; // Transparent
+            } else {
+                // Navbar has scrolled past the hero section
+                navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`; // Gradually darkens
+            }
+        });
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButtons = document.querySelectorAll('.toggle-text');
+
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const card = this.closest('.drop-down-card');
+                    const icon = this.querySelector('i');
+
+                    card.classList.toggle('expanded');
+
+                    if (card.classList.contains('expanded')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                        card.style.height = 'auto';
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                        card.style.height = '200px'; // or any desired default height
+                    }
+                });
+            });
+        });
+
+
+    </script>
 </body>
 
 </html>

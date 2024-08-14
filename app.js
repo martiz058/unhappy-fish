@@ -79,24 +79,34 @@ const scriptSrcUrls = [
     "https://cdnjs.cloudflare.com/",
     "https://cdn.jsdelivr.net",
 ];
+
 const styleSrcUrls = [
     "https://api.mapbox.com/",
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 ];
+
 const connectSrcUrls = [
     "https://api.mapbox.com/",
     "https://a.tiles.mapbox.com/",
     "https://b.tiles.mapbox.com/",
     "https://events.mapbox.com/",
 ];
-const fontSrcUrls = [];
+
+const fontSrcUrls = [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com", // Include this for the actual font files
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/"
+];
+
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
-            defaultSrc: [],
+            defaultSrc: ["'self'"], // Define a default source
             connectSrc: ["'self'", ...connectSrcUrls],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls, "https://fonts.googleapis.com"], // Ensure fonts.googleapis.com is included
+            styleSrcElem: ["'self'", "'unsafe-inline'", ...styleSrcUrls, "https://fonts.googleapis.com"], // Explicitly allow style elements from Google Fonts
             workerSrc: ["'self'", "blob:"],
             objectSrc: [],
             imgSrc: [
@@ -105,7 +115,7 @@ app.use(
                 "data:",
                 "https://res.cloudinary.com/doy9gjdfi/",
             ],
-            fontSrc: ["'self'", ...fontSrcUrls],
+            fontSrc: ["'self'", ...fontSrcUrls], // Include both Google Fonts URLs
         },
     })
 );

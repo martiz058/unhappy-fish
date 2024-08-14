@@ -1,0 +1,85 @@
+/* footerStyle.css */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Footer Sections */
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer h4 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Quick Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+}
+
+/* Contact Information */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+}
+
+/* Social Media Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+
+/* Footer Slogan */
+.footer-slogan {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #ccc;
+}

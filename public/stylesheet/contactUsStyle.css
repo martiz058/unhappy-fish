@@ -1,0 +1,172 @@
+/* contactUsStyle.css */
+
+/* Container and Banner Styles */
+.contact-us .banner-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-us .banner-container h1 {
+    font-size: 2em;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+
+.contact-us .banner-container p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Form Styles */
+.contact-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-group label {
+    display: block;
+    font-size: 1.2em;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Oswald', sans-serif;
+    box-sizing: border-box;
+}
+
+.contact-form .form-group textarea {
+    resize: none;
+}
+
+.contact-form .form-group .btn {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .form-group .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Image Styles */
+.info-image-container {
+    padding: 10px;
+}
+
+.info-portrait {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+
+/* footerStyle.css */
+
+/* Footer Container */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Footer Sections */
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer h4 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Quick Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+}
+
+/* Contact Information */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+}
+
+/* Social Media Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    color: #fff;
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+
+/* Footer Slogan */
+.footer-slogan {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ccc;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #ccc;
+}

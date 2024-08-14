@@ -1,0 +1,63 @@
+/*hero*/
+.hero-container {
+    position: relative;
+    background-image: url('/data/images/pexels-joshsorenson-258215.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.hero-container>* {
+    position: relative;
+    z-index: 2;
+}
+
+.hero {
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1em;
+    margin-top: 0px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0.5em 0;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin: 0.5em 0 1em 0;
+    max-width: 600px;
+}
+
+/* Hero Button Styling */
+.hero button {
+    background-color: grey;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: rgb(102, 102, 102);
+    color: white;
+}
