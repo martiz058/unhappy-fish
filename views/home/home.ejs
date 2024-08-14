@@ -35,18 +35,18 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/locations">Locations</a>
+                            <a class="nav-link" aria-current="page" href="/locations">Locations</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/stories">Stories</a>
+                            <a class="nav-link" aria-current="page" href="/stories">Stories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page">Fishing Manuals</a>
+                            <a class="nav-link" aria-current="page">Fishing Manuals</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Upload
                             </a>
@@ -80,11 +80,12 @@
             <p>Your ultimate destination for all things fishing! Whether you're a beginner or a seasoned angler, our
                 platform is designed to help you discover new fishing spots, share your own experiences, and connect
                 with fellow fishing enthusiasts.</p>
-            <button id="readMoreButton" class="btn btn-secondary">Read More</button>
+            <button data-target="about-section" class="scroll-button btn btn-secondary">Read
+                More</button>
         </section>
 
         <!--About US-->
-        <section class="about-section container-one">
+        <section id="about-section" class="container-one">
             <!-- Section Title -->
             <div class="banner-container">
                 <h1>Who We Our</h1>
@@ -182,6 +183,14 @@
             </div>
         </section>
 
+        <section class="section-divider-one">
+            <!-- Add multiple images here -->
+            <img src="/data/images/fish-2.png" alt="Image 1">
+            <img src="/data/images/fish-2.png" alt="Image 2">
+            <img src="/data/images/fish-2.png" alt="Image 3">
+            <!-- Add more images as needed -->
+        </section>
+
         <!--Features-->
         <section class="ourFeatures-section container-two">
             <!-- Section Title -->
@@ -197,7 +206,7 @@
             <!-- Features Cards -->
             <div class="row mb-5">
                 <div class="col-md-4">
-                    <div class="feature-card">
+                    <div class="scroll-button feature-card" data-target="location-gallery">
                         <div class="card-title">
                             <h3>Discover Locations</h3>
                         </div>
@@ -217,7 +226,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card">
+                    <div class="scroll-button feature-card" data-target="community-stories">
                         <div class="card-title">
                             <h3>Share Stories</h3>
                         </div>
@@ -237,7 +246,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card">
+                    <div class="scroll-button feature-card" data-target="fishing-manual">
                         <div class="card-title">
                             <h3>Basic Techniques</h3>
                         </div>
@@ -265,7 +274,15 @@
             </div>
         </section>
 
-        <section class="location-gallery container-one">
+        <section class="section-divider-two">
+            <!-- Add multiple images here -->
+            <img src="/data/images/fish-2.png" alt="Image 1">
+            <img src="/data/images/fish-2.png" alt="Image 2">
+            <img src="/data/images/fish-2.png" alt="Image 3">
+            <!-- Add more images as needed -->
+        </section>
+
+        <section id="location-gallery" class="container-one">
             <!-- Section Title -->
             <div class="banner-container">
                 <h1>Fishing Locations</h1>
@@ -305,7 +322,15 @@
             </div>
         </section>
 
-        <section class="community-stories container-two">
+        <section class="section-divider-one">
+            <!-- Add multiple images here -->
+            <img src="/data/images/fish-2.png" alt="Image 1">
+            <img src="/data/images/fish-2.png" alt="Image 2">
+            <img src="/data/images/fish-2.png" alt="Image 3">
+            <!-- Add more images as needed -->
+        </section>
+
+        <section id="community-stories" class="container-two">
             <!-- Section Title -->
             <div class="banner-container">
                 <h1>Community Stories</h1>
@@ -383,7 +408,15 @@
             </div>
         </section>
 
-        <section class="fishing-manual container-one">
+        <section class="section-divider-two">
+            <!-- Add multiple images here -->
+            <img src="/data/images/fish-2.png" alt="Image 1">
+            <img src="/data/images/fish-2.png" alt="Image 2">
+            <img src="/data/images/fish-2.png" alt="Image 3">
+            <!-- Add more images as needed -->
+        </section>
+
+        <section id="fishing-manual" class="container-one">
             <!-- Section Title -->
             <div class="banner-container">
                 <h1>Fishing Basics</h1>
@@ -454,6 +487,14 @@
                     <button class="btn btn-primary">View All</button>
                 </div>
             </div>
+        </section>
+
+        <section class="section-divider-one">
+            <!-- Add multiple images here -->
+            <img src="/data/images/fish-2.png" alt="Image 1">
+            <img src="/data/images/fish-2.png" alt="Image 2">
+            <img src="/data/images/fish-2.png" alt="Image 3">
+            <!-- Add more images as needed -->
         </section>
 
         <section class="contact-us container-two">
@@ -567,34 +608,9 @@
                 navbar.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`; // Gradually darkens
             }
         });
-
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggleButtons = document.querySelectorAll('.toggle-text');
-
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const card = this.closest('.drop-down-card');
-                    const icon = this.querySelector('i');
-
-                    card.classList.toggle('expanded');
-
-                    if (card.classList.contains('expanded')) {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                        card.style.height = 'auto';
-                    } else {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                        card.style.height = '200px'; // or any desired default height
-                    }
-                });
-            });
-        });
-
-
-    </script>
+    <script src="/javascripts/dropDownCard.js"></script>
+    <script src="/javascripts/scrollToID.js"></script>
 </body>
 
 </html>

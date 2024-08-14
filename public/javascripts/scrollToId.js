@@ -1,24 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const readMoreButton = document.getElementById('readMoreButton');
-    const features = document.querySelectorAll('.scroll-to-showcase');
-
-    readMoreButton?.addEventListener('click', () => {
-        scrollToId('features');
+document.querySelectorAll('.scroll-button').forEach(button => {
+    button.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-target'); // Get the target section ID
+        const targetElement = document.getElementById(targetId); // Find the target element
+        if (targetElement) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight; // Get the height of the navbar
+            window.scrollTo({
+                top: targetElement.offsetTop - navbarHeight,
+                behavior: 'smooth'
+            });
+        }
     });
-
-    features.forEach(feature => {
-        feature.addEventListener('click', () => {
-            scrollToId('showcase');
-        });
-    });
-
-    function scrollToId(sectionId) {
-        const section = document.getElementById(sectionId);
-        const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
-
-        window.scrollTo({
-            top: section.offsetTop - navbarHeight,
-            behavior: 'smooth'
-        });
-    }
 });

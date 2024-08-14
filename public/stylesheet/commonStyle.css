@@ -40,11 +40,36 @@ html {
 }
 
 .container-one {
-    background: rgb(178, 217, 222);
+    background: rgba(178, 217, 222);
 }
 
 .container-two {
     background-color: rgba(118, 176, 187);
+}
+
+.section-divider-one,
+.section-divider-two {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.section-divider-one img,
+.section-divider-two img {
+    height: 24px;
+    margin: 0 10px;
+}
+
+.section-divider-one {
+    background: linear-gradient(to bottom, rgba(178, 217, 222), rgba(118, 176, 187));
+}
+
+.section-divider-two {
+    background: linear-gradient(to bottom, rgba(118, 176, 187), rgba(178, 217, 222));
 }
 
 /* end */
