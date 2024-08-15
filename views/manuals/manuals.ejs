@@ -1,70 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fishing Basics</title>
-    <link rel="stylesheet" href="/stylesheet/navbarStyle.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        h2 {
-            color: #2f4f4f;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        ul {
-            margin-bottom: 20px;
-        }
-
-        .highlight {
-            background-color: #e0ffff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #4682b4;
-            color: white;
-        }
-    </style>
-</head>
-
-<body class="d-flex flex-column min-vh-100">
-    <header class="sticky-top">
-        <!-- Navbar -->
-        <%- include('../partials/navbar') -%>
-    </header>
-
-    <div id="main" class="container">
+<% layout('layouts/boilerplate')%>
+    <main id="main" class="container">
         <h1>Fishing Basics</h1>
 
         <div class="section">
@@ -73,7 +8,8 @@
             <ul>
                 <li><strong>Rod and Reel</strong>:
                     <ul>
-                        <li>Spinning Rod and Reel: Ideal for beginners due to their versatility and ease of use.</li>
+                        <li>Spinning Rod and Reel: Ideal for beginners due to their versatility and ease of use.
+                        </li>
                         <li>Baitcasting Rod and Reel: Offers better control and accuracy, suitable for experienced
                             anglers.</li>
                     </ul>
@@ -98,7 +34,8 @@
         <div class="section highlight">
             <h2>Choosing the Right Bait</h2>
             <ul>
-                <li><strong>Live Bait</strong>: Worms, minnows, and insects. Effective but require proper storage and
+                <li><strong>Live Bait</strong>: Worms, minnows, and insects. Effective but require proper storage
+                    and
                     handling.</li>
                 <li><strong>Artificial Lures</strong>:
                     <ul>
@@ -113,11 +50,13 @@
         <div class="section">
             <h2>Basic Techniques</h2>
             <ul>
-                <li><strong>Casting</strong>: Practice accurate casting to place your bait where fish are likely to be.
+                <li><strong>Casting</strong>: Practice accurate casting to place your bait where fish are likely to
+                    be.
                     Use overhead or sidearm casts depending on the environment.</li>
                 <li><strong>Retrieving</strong>: Vary the speed and pattern of your retrieve to mimic the natural
                     movement of prey. Pause intermittently to entice fish.</li>
-                <li><strong>Setting the Hook</strong>: When you feel a bite, quickly and firmly lift the rod to set the
+                <li><strong>Setting the Hook</strong>: When you feel a bite, quickly and firmly lift the rod to set
+                    the
                     hook in the fish's mouth.</li>
             </ul>
         </div>
@@ -125,7 +64,8 @@
         <div class="section">
             <h2>Fishing Locations</h2>
             <ul>
-                <li><strong>Freshwater Fishing</strong>: Lakes, rivers, and ponds. Common species: Bass, trout, catfish,
+                <li><strong>Freshwater Fishing</strong>: Lakes, rivers, and ponds. Common species: Bass, trout,
+                    catfish,
                     and bluegill.</li>
                 <li><strong>Saltwater Fishing</strong>: Oceans, seas, and bays. Common species: Mackerel, tuna,
                     flounder, and snapper.</li>
@@ -140,17 +80,4 @@
                 <li>Wear life jackets, especially when fishing from a boat. Keep a first-aid kit handy.</li>
             </ul>
         </div>
-    </div>
-
-    <div class="footer">
-        Happy Fishing!
-    </div>
-
-    <!--Custom-->
-    <script src="/javascripts/utils.js"></script>
-    <script>
-        changeNavbarColorOnScroll('main', 'black', 'rgba(0, 0, 0, 0.7)');
-    </script>
-</body>
-
-</html>
+    </main>
