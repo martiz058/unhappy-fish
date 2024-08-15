@@ -141,9 +141,9 @@
 
         <section class="section-divider-one">
             <!-- Add multiple images here -->
-            <img src="/data/images/fish-2.png" alt="Image 1">
-            <img src="/data/images/fish-2.png" alt="Image 2">
-            <img src="/data/images/fish-2.png" alt="Image 3">
+            <img src="/data/images/fish-3.png" alt="Image 1">
+            <img src="/data/images/fish-1.png" alt="Image 2">
+            <img src="/data/images/fish-6.png" alt="Image 3">
             <!-- Add more images as needed -->
         </section>
 
@@ -225,16 +225,20 @@
             <!-- Sign Up Button -->
             <div class="row mb-4">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">Sign Up Now</button>
+                    <% if (!isLogin) { %>
+                        <a class="btn btn-primary" href="/register">Sign Up Now</a>
+                        <% } else { %>
+                            <a class="btn btn-primary" aria-current="page" href="/locations">Show Sites</a>
+                            <% } %>
                 </div>
             </div>
         </section>
 
         <section class="section-divider-two">
             <!-- Add multiple images here -->
-            <img src="/data/images/fish-2.png" alt="Image 1">
+            <img src="/data/images/fish-3.png" alt="Image 1">
             <img src="/data/images/fish-2.png" alt="Image 2">
-            <img src="/data/images/fish-2.png" alt="Image 3">
+            <img src="/data/images/fish-4.png" alt="Image 3">
             <!-- Add more images as needed -->
         </section>
 
@@ -250,20 +254,41 @@
 
             <!-- gallery -->
             <div class="image-collage row mb-4">
-                <% for (let index=0; index < 6; index++) { %>
+                <% for (location of locations) { %>
                     <div class="col-6">
                         <div class="flip-card mb-4">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <img src="/data/images/pexels-nihat-12231-69224.jpg" alt="Landscape Image">
+                                    <% if (location.image.length==0) { %>
+                                        <img
+                                            src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png">
+                                        <% } else { %>
+                                            <img src="<%=location.image[0].imageUrl %>"
+                                                alt="<%=location.image[0].imageName %>">
+                                            <% } %>
                                 </div>
-                                <div class="flip-card-back">
-                                    <h1 class="common-card-title">Title Here</h1>
-                                    <h2 class="common-card-subtitle">Subtitle Here</h2>
-                                    <p class="common-card-text">Body text goes here. Provide a brief description or
-                                        additional information about
-                                        the image or location.</p>
-                                    <p class="common-card-footer">Footer or body-subtitle text here.</p>
+                                <div class=" flip-card-back">
+                                    <h1 class="common-card-title">
+                                        <%= location.siteName %>
+                                    </h1>
+                                    <h2 class="common-card-subtitle">
+                                        <%= location.locationInfo.properties.place_formatted %>
+                                    </h2>
+                                    <div>
+                                        <% for( let index=1; index <=5; index++ ) { %>
+                                            <% if (index <=location.averageRating) { %>
+                                                <img src="/data/images/starfish-1.png" style="height: 2em;">
+                                                <% } else { %>
+                                                    <img src="/data/images/starfish-0.png" style="height: 2em;">
+                                                    <%}%>
+                                                        <% } %>
+                                                            <p class="card-text my-2">
+                                                                <%= location.averageRating %> average reviews.
+                                                            </p>
+                                    </div>
+                                    <p class="common-card-footer">
+                                        <%=location.author%>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -273,16 +298,18 @@
             <!-- View More Button -->
             <div class="row mb-4">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">View All</button>
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary" aria-current="page" href="/locations">View All</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="section-divider-one">
             <!-- Add multiple images here -->
-            <img src="/data/images/fish-2.png" alt="Image 1">
-            <img src="/data/images/fish-2.png" alt="Image 2">
-            <img src="/data/images/fish-2.png" alt="Image 3">
+            <img src="/data/images/fish-6.png" alt="Image 1">
+            <img src="/data/images/fish-3.png" alt="Image 2">
+            <img src="/data/images/fish-5.png" alt="Image 3">
             <!-- Add more images as needed -->
         </section>
 
@@ -298,68 +325,27 @@
 
             <!-- stories gallery -->
             <div>
-                <div class="col-12">
-                    <div class="drop-down-card">
-                        <button class="toggle-text"><i class="fas fa-chevron-down"></i></button>
-                        <h1 class="drop-down-title common-card-title">Title</h1>
-                        <p class="drop-down-text common-card-text">
-                            Body text goes here. Provide a brief description or additional information.
-                            <!-- Assume the body text contains 500 characters -->
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae
-                            vestibulum
-                            vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Curabitur egestas tincidunt
-                            tortor, at sagittis lorem fermentum nec. Vivamus id erat nec orci posuere blandit. Sed
-                            varius
-                            est id convallis feugiat. Suspendisse potenti. Pellentesque habitant morbi tristique
-                            senectus et
-                            netus et malesuada fames ac turpis egestas. Aenean a urna vel sem auctor aliquam. Lorem
-                            ipsum
-                            dolor sit amet, consectetur adipisicing elit. Illo, maiores? Quia placeat veniam ad
-                            mollitia,
-                            eveniet odio, excepturi vitae cupiditate sunt sit autem voluptatem unde blanditiis dolores
-                            natus
-                            consequuntur adipisci? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-                            sequi
-                            quibusdam, tempore praesentium officiis vel quas delectus eius commodi ea ratione soluta ex
-                            odio, quasi officia, quaerat laborum eligendi culpa?
-                        </p>
-                        <p class="drop-down-footer common-card-footer">Footer text here.</p>
+                <% for (story of stories) { %>
+                    <div class="col-12">
+                        <div class="drop-down-card">
+                            <button class="toggle-text"><i class="fas fa-chevron-down"></i></button>
+                            <h1 class="drop-down-title common-card-title">
+                                <%=story.storyName %>
+                            </h1>
+                            <p class="drop-down-text common-card-text">
+                                <%=story.description%>
+                            </p>
+                            <p class="drop-down-footer common-card-footer">
+                                <%=story.author%>
+                            </p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="drop-down-card">
-                        <button class="toggle-text"><i class="fas fa-chevron-down"></i></button>
-                        <h1 class="drop-down-title common-card-title">Title</h1>
-                        <p class="drop-down-text common-card-text">
-                            Body text goes here. Provide a brief description or additional information.
-                            <!-- Assume the body text contains 500 characters -->
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae
-                            vestibulum
-                            vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Curabitur egestas tincidunt
-                            tortor, at sagittis lorem fermentum nec. Vivamus id erat nec orci posuere blandit. Sed
-                            varius
-                            est id convallis feugiat. Suspendisse potenti. Pellentesque habitant morbi tristique
-                            senectus et
-                            netus et malesuada fames ac turpis egestas. Aenean a urna vel sem auctor aliquam. Lorem
-                            ipsum
-                            dolor sit amet, consectetur adipisicing elit. Illo, maiores? Quia placeat veniam ad
-                            mollitia,
-                            eveniet odio, excepturi vitae cupiditate sunt sit autem voluptatem unde blanditiis dolores
-                            natus
-                            consequuntur adipisci? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-                            sequi
-                            quibusdam, tempore praesentium officiis vel quas delectus eius commodi ea ratione soluta ex
-                            odio, quasi officia, quaerat laborum eligendi culpa?
-                        </p>
-                        <p class="drop-down-footer common-card-footer">Footer text here.</p>
-                    </div>
-                </div>
+                    <%}%>
             </div>
             <!-- View More Button -->
             <div class="row mb-4">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">View All</button>
+                    <a class="btn btn-primary" aria-current="page" href="/stories">View All</a>
                 </div>
             </div>
         </section>
@@ -367,8 +353,8 @@
         <section class="section-divider-two">
             <!-- Add multiple images here -->
             <img src="/data/images/fish-2.png" alt="Image 1">
-            <img src="/data/images/fish-2.png" alt="Image 2">
-            <img src="/data/images/fish-2.png" alt="Image 3">
+            <img src="/data/images/fish-3.png" alt="Image 2">
+            <img src="/data/images/fish-1.png" alt="Image 3">
             <!-- Add more images as needed -->
         </section>
 
@@ -440,16 +426,16 @@
             <!-- View More Button -->
             <div class="row mb-4">
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary">View All</button>
+                    <a class="btn btn-primary" aria-current="page" href="/manuals">View All</a>
                 </div>
             </div>
         </section>
 
         <section class="section-divider-one">
             <!-- Add multiple images here -->
-            <img src="/data/images/fish-2.png" alt="Image 1">
-            <img src="/data/images/fish-2.png" alt="Image 2">
-            <img src="/data/images/fish-2.png" alt="Image 3">
+            <img src="/data/images/fish-4.png" alt="Image 1">
+            <img src="/data/images/fish-1.png" alt="Image 2">
+            <img src="/data/images/fish-3.png" alt="Image 3">
             <!-- Add more images as needed -->
         </section>
 
@@ -472,23 +458,48 @@
                 <!-- Column 2: Contact Form -->
                 <div class="col-lg-6 col-md-4 col-sm-12">
                     <div class="contact-form info-content">
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name" class="info-title">Name</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
+                        <form id="contactForm" class="needs-validation m-4" action="/" method="post" novalidate>
+                            <div>
+                                <label class="form-label" for="name"></label>
+                                <input class="form-control" type="text" name="name" id="name" placeholder="Your Name"
+                                    minlength="3" maxlength="30" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Name must be 3-30 characters
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="email" class="info-title">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
+
+                            <div>
+                                <label class="form-label" for="email"></label>
+                                <input class="form-control" type="email" name="email" id="email"
+                                    placeholder="Your Email" minlength="3" maxlength="30" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    invalid email
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="message" class="info-title">Message</label>
-                                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+
+                            <div>
+                                <label class="form-label" for="message"></label>
+                                <textarea class="form-control" name="message" id="message" rows="5"
+                                    placeholder="Your Message" minlength="3" maxlength="300" required></textarea>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Message must be 3-30 characters
+                                </div>
                             </div>
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Send Message</button>
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
                 <!-- Column 3: Portrait Image -->
@@ -523,6 +534,7 @@
     </script>
     <script src="/javascripts/dropDownCard.js"></script>
     <script src="/javascripts/scrollToID.js"></script>
+    <script src="/javascripts/checkFormBootstrap.js"></script>
 </body>
 
 </html>
