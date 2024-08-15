@@ -38,63 +38,17 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!--Navbar-->
-    <nav id="navbar" class="navbar sticky-top navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid m-1">
-            <a class="navbar-brand" href="/">
-                <img class="myLogo-size" src="<%=getRandomImage()%>" alt="Logo" class="d-inline-block align-text-top">
-                UnHappyFish
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/locations">Locations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/stories">Stories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Fishing Manuals</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Upload
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/locations/new">Upload Spot</a></li>
-                            <li><a class="dropdown-item" href="/stories/new">Share Story</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="myLogin mx-5">
-                    <% if (!isLogin) { %>
-                        <a class="nav-link" href=" /login">Login</a>
-                        <% } else { %>
-                            <a class="nav-link" href="/logout">Logout</a>
-                            <% } %>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <header class="sticky-top">
+        <!-- Navbar -->
+        <%- include('../partials/navbar') -%>
+    </header>
 
     <!--flash-->
     <section>
         <%- include('../partials/flash') -%>
     </section>
 
-    <main class="m-5">
+    <main id="main" class="m-5">
         <section class="container">
             <h1 style="font-size: 5rem;">
                 500
@@ -115,6 +69,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
+
+    <!--Custom-->
+    <script src="/javascripts/utils.js"></script>
+    <script>
+        changeNavbarColorOnScroll('main', 'black', 'rgba(0, 0, 0, 0.7)');
+    </script>
 
 </body>
 

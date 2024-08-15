@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fishing Basics</title>
+    <link rel="stylesheet" href="/stylesheet/navbarStyle.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,8 +58,13 @@
     </style>
 </head>
 
-<body>
-    <div class="container">
+<body class="d-flex flex-column min-vh-100">
+    <header class="sticky-top">
+        <!-- Navbar -->
+        <%- include('../partials/navbar') -%>
+    </header>
+
+    <div id="main" class="container">
         <h1>Fishing Basics</h1>
 
         <div class="section">
@@ -139,6 +145,12 @@
     <div class="footer">
         Happy Fishing!
     </div>
+
+    <!--Custom-->
+    <script src="/javascripts/utils.js"></script>
+    <script>
+        changeNavbarColorOnScroll('main', 'black', 'rgba(0, 0, 0, 0.7)');
+    </script>
 </body>
 
 </html>

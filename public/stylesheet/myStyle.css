@@ -1,8 +1,8 @@
-body {
-    font-family: Arial, sans-serif;
+body,
+html {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+
 }
 
 /* button style */
@@ -16,10 +16,6 @@ body {
     color: white;
 }
 
-/* Navbar */
-.myLogin {
-    color: white;
-}
 
 .myContainer {
     background: white;
