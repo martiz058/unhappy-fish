@@ -1,105 +1,127 @@
-<% layout('layouts/boilerplate')%>
-    <main id="main" class="flex-grow-1">
-        <!--ShowCase-->
-        <section id="showcase" class="container my-5">
-            <div class="d-flex flex-column align-items-center mt-5">
-                <h1>
-                    <b>Fishing Locations</b>
-                </h1>
+<% layout('layouts/boilerplate') %>
+    <section id="main" class="welcome-container">
+        <div class="row image-row">
+            <div class="col-2">
+                <img src="/data/images/fish-3.png" class="icon-image" alt="Image 1">
             </div>
-
-            <!--Issue with small screens-->
-            <div class="container">
-                <div class="row">
-                    <% for(let i=0; i < 6; i++) {%>
-                        <div class="col-md-2">
-                            <img class="myLogo-size" src="/data/images/fish-0.png" alt="Logo">
-                        </div>
-                        <%}%>
-                </div>
-                <hr>
+            <div class="col-2">
+                <img src="/data/images/fish-0.png" class="icon-image" alt="Image 2">
             </div>
+            <div class="col-2">
+                <img src="/data/images/fish-6.png" class="icon-image" alt="Image 3">
+            </div>
+            <div class="col-2">
+                <img src="/data/images/fish-4.png" class="icon-image" alt="Image 4">
+            </div>
+            <div class="col-2">
+                <img src="/data/images/fish-2.png" class="icon-image" alt="Image 5">
+            </div>
+        </div>
+        <div class="row welcome-message">
+            <h1>Hello! Welcome to our gallery, where you can explore beautiful locations captured in stunning images.
+            </h1>
+        </div>
+        <!--
+        <div class="row search-bar">
+            <form class="search-form">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button type="submit">Search</button>
+            </form>
+            <div class="tags">
+                <button class="tag-button">Ocean</button>
+                <button class="tag-button">Lake</button>
+                <button class="tag-button">Other</button>
+                <button class="tag-button">Other</button>
+                <button class="tag-button">Other</button>
+            </div>
+        </div>
+        -->
+    </section>
 
-            <div class="container">
-                <div class="row mt-3">
-                    <% for (site of locations) { %>
-                        <div class="col-md-4">
-                            <div class="card mb-4">
-                                <% if (site.image.length==0) { %>
-                                    <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
-                                        class="card-img-top" alt="No Image" width="200" height="200">
+    <section class="section-divider-two">
+        <img src="/data/images/fish-4.png" alt="Image 1">
+        <img src="/data/images/fish-1.png" alt="Image 2">
+        <img src="/data/images/fish-3.png" alt="Image 3">
+    </section>
 
-                                    <% } else { %>
-                                        <img src="<%=site.image[0].imageUrl %>" class="card-img-top"
-                                            alt="<%=site.image[0].imageName %>" width="200" height="200">
-                                        <% } %>
-
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <%= site.siteName.length> 30 ? site.siteName.substring(0,
-                                                        30) +
-                                                        '...'
-                                                        :
-                                                        site.siteName %>
-                                                </h5>
-                                                <h6 class="card-subtitle mb-2 text-body-secondary">
-                                                    <%= site.locationInfo.properties.place_formatted %>
-                                                </h6>
-                                                <p class="card-text">
-                                                    <%= site.description.length> 75 ?
-                                                        site.description.substring(0,
-                                                        75) +
-                                                        '...'
-                                                        :
-                                                        site.description %>
-                                                </p>
-                                                <a href="/locations/<%=site._id%>" class="btn btn-primary">
-                                                    <%= site.siteName.length> 30 ? site.siteName.substring(0,
-                                                        30) +
-                                                        '...'
-                                                        :
-                                                        site.siteName %>
-                                                </a>
+    <!--LocationGallery-->
+    <section id="locationGallery" class="container-one">
+        <div class="container">
+            <div class="row">
+                <% locations.forEach((location, index)=> { %>
+                    <% if (index % 2===0 && index !==0) { %>
+            </div>
+            <div class="row">
+                <% } %>
+                    <div class="col-md-6 mb-4">
+                        <div class="landscape-image-card">
+                            <% if (location.image.length==0) { %>
+                                <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
+                                    class="card-img-top" alt="No Image">
+                                <% } else { %>
+                                    <img src="<%= location.image[0].imageUrl %>"
+                                        alt="<%= location.image[0].imageName %>">
+                                    <% } %>
+                                        <div class="overlay"></div>
+                                        <div class="landscape-image-card-container">
+                                            <div class="common-card-title">
+                                                <%= location.siteName %>
                                             </div>
-                            </div>
+                                            <div class="common-card-subtitle">
+                                                <%= location.locationInfo.properties.place_formatted %>
+                                            </div>
+                                            <div class="common-card-text">
+                                                <%= location.description.length> 75 ?
+                                                    location.description.substring(0, 75) + '...' :
+                                                    location.description %>
+                                            </div>
+                                            <a href="/locations/<%= location._id %>" class="btn btn-primary">Read
+                                                More</a>
+                                        </div>
                         </div>
-                        <% } %>
-                </div>
+                    </div>
+                    <% }); %>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!--Pagination-->
-        <section class="mt-3" aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <% if (currentPage <=1) { %>
-                        <a class="page-link disabled">Previous</a>
+    <section class="section-divider-one">
+        <img src="/data/images/fish-1.png" alt="Image 1">
+        <img src="/data/images/fish-5.png" alt="Image 2">
+        <img src="/data/images/fish-3.png" alt="Image 3">
+    </section>
+
+    <!--Pagination-->
+    <section class="container-two" aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <% if (currentPage <=1) { %>
+                    <a class="page-link disabled">Previous</a>
+                    <% } else { %>
+                        <a class="page-link" href="/locations?page=<%= currentPage - 1 %>">Previous</a>
+                        <% } %>
+            </li>
+
+            <% for (let index=1; index <=totalPages; index++) { %>
+                <li class="page-item" aria-current="page">
+                    <% if (currentPage===index) { %>
+                        <a class="page-link active" href="/locations?page=<%= index %>">
+                            <%= index %>
+                        </a>
                         <% } else { %>
-                            <a class="page-link" href="/locations?page=<%= currentPage - 1 %>">Previous</a>
-                            <% } %>
-                </li>
-
-                <% for (let index=1; index <=totalPages; index++) { %>
-                    <li class="page-item" aria-current="page">
-                        <% if (currentPage===index) { %>
-                            <a class="page-link active" href="/locations?page=<%= index %>">
+                            <a class="page-link" href="/locations?page=<%= index %>">
                                 <%= index %>
                             </a>
+                            <% } %>
+                </li>
+                <% } %>
+
+                    <li class="page-item">
+                        <% if (currentPage>= totalPages) { %>
+                            <a class="page-link disabled" href="#">Next</a>
                             <% } else { %>
-                                <a class="page-link" href="/locations?page=<%= index %>">
-                                    <%= index %>
-                                </a>
+                                <a class="page-link" href="/locations?page=<%= currentPage + 1 %>">Next</a>
                                 <% } %>
                     </li>
-                    <% } %>
-
-                        <li class="page-item">
-                            <% if (currentPage>= totalPages) { %>
-                                <a class="page-link disabled" href="#">Next</a>
-                                <% } else { %>
-                                    <a class="page-link" href="/locations?page=<%= currentPage + 1 %>">Next</a>
-                                    <% } %>
-                        </li>
-            </ul>
-        </section>
-    </main>
+        </ul>
+    </section>
