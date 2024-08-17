@@ -1,36 +1,58 @@
 <% layout('layouts/boilerplate')%>
-    <main id="main" class="m-5">
-        <section class="card" style="width: 60%; margin: 0 auto;">
-            <h3 class=" card-header text-center">Uplaod New Story</h3>
-            <form class="needs-validation m-4" action="/stories" method="post" novalidate>
-                <div class="mb-3">
-                    <label class="form-label" for="storyName">Title</label>
-                    <input class="form-control" type="text" id="storyName" name="storyName" placeholder="Site Name"
-                        minlength="3" maxlength="30" required>
-                    <div class="valid-feedback">
-                        Looks good!
+    <section id="main">
+        <div class="row">
+            <!-- Column 1: Portrait Image -->
+            <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="info-image-container">
+                </div>
+            </div>
+            <!-- Column 2: Register Form -->
+            <div class="col-lg-6 col-md-4 col-sm-12">
+                <div class="card m-5" style="border-radius: 20px;">
+                    <div class="card-header text-center">
+                        <h3>Uplaod New Story </h3>
                     </div>
-                    <div class="invalid-feedback">
-                        Site Name must be 3-30 characters
+                    <div class="card-body">
+                        <form class="needs-validation mx-4" action="/stories" method="post" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="storyName">Title</label>
+                                <input class="form-control" type="text" id="storyName" name="storyName"
+                                    placeholder="Site Name" minlength="3" maxlength="30" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Site Name must be 3-30 characters
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" type="text" id="description" name="description"
+                                    placeholder="Description" minlength="3" maxlength="3000" rows="10"
+                                    required></textarea>
+                                <div class=" valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    description must be 3-3000 characters
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                                <a href="/stories" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
+            <!-- Column 3: Portrait Image -->
+            <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="info-image-container">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="description"
-                        placeholder="Description" minlength="3" maxlength="1000" rows="10" required></textarea>
-                    <div class=" valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        description must be 3-1000 characters
-                    </div>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-                    <a href="/stories" class="btn btn-danger">Cancel</a>
-                </div>
-            </form>
-        </section>
-    </main>
+    <!--javascripts-->
+    <script src="/javascripts/checkFormBootstrap.js"></script>

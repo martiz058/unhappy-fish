@@ -562,3 +562,23 @@ html {
         /* Reverse layout for alternating cards */
     }
 }
+
+
+
+/*hold*/
+.card-divider {
+    color: gray;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.card-divider::before,
+.card-divider::after {
+    flex: 1;
+    content: '';
+    padding: .1px;
+    background-color: grey;
+    margin: 5px;
+}

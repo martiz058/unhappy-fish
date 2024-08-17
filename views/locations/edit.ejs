@@ -1,93 +1,121 @@
 <% layout('layouts/boilerplate')%>
-    <main id="main" class="m-5">
-        <section class="card" style="width: 60%; margin: 0 auto;">
-            <h3 class=" card-header text-center">Update Site</h3>
-            <form class="needs-validation m-4" action="/locations/<%=site._id%>?_method=PUT" method="post"
-                enctype="multipart/form-data" novalidate>
-
-                <div class="mb-3">
-                    <label class="form-label" for="siteName">Site Name</label>
-                    <input class="form-control" type="text" id="siteName" name="siteName" value="<%=site.siteName%>"
-                        minlength="3" maxlength="30" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Site must be 3-30 characters
-                    </div>
+    <section id="main">
+        <div class="row">
+            <!-- Column 1: Portrait Image -->
+            <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="info-image-container">
                 </div>
+            </div>
+            <!-- Column 2: Register Form -->
+            <div class="col-lg-6 col-md-4 col-sm-12">
+                <div class="card m-5" style="border-radius: 20px;">
+                    <div class="card-header text-center pt-3">
+                        <h3>Edit Location</h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation m-4" action="/locations/<%=site._id%>?_method=PUT" method="post"
+                            enctype="multipart/form-data" novalidate>
 
-                <!--UI Error Here-->
-                <div class="mb-3">
-                    <label class="form-label" for="locationSearch">Location</label>
-                    <div>
-                        <mapbox-search-box id="locationSearch" access-token="<%= process.env.MAPBOX_TOKEN %>"
-                            proximity="0,0" placeholder="<%=site.locationInfo.properties.name %>"
-                            value="<%=site.locationInfo%>"></mapbox-search-box>
-                    </div>
-                    <input class="form-control" type="hidden" id="location" name="location"
-                        value="<%=JSON.stringify(site.locationInfo)%>" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please select a location.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="description"
-                        value="<%=site.description%>" minlength="3" maxlength="300"
-                        required><%=site.description%></textarea>
-                    <div class=" valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        description must be 3-300 characters
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="images">Upload More Images:</label>
-                    <input type="file" id="images" name="images" accept="image/png, image/jpeg, image/jpg" multiple />
-                    <div class=" valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        At most 5 images
-                    </div>
-                </div>
-
-                <br>
-                <hr>
-                <p>Delete Images</p>
-
-                <div class="container">
-                    <div class="row g-2">
-                        <% site.image.forEach((el, index)=> { %>
-                            <div class="col-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="image_<%= index %>"
-                                        name="selectedImages" value="<%= el.public_id%>">
-                                    <label class="form-check-label" for="image_<%= index %>">
-                                        <%=el.imageName%>
-                                    </label>
+                            <div class="mb-3">
+                                <label class="form-label" for="siteName">Site Name</label>
+                                <input class="form-control" type="text" id="siteName" name="siteName"
+                                    value="<%=site.siteName%>" minlength="3" maxlength="30" required>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="card mb-4">
-                                    <img src="<%= el.imageUrl %>" class="img-thumbnail" alt="<%= el.imageName %>">
+                                <div class="invalid-feedback">
+                                    Site must be 3-30 characters
                                 </div>
                             </div>
-                            <% }) %>
+
+                            <!--UI Error Here-->
+                            <div class="mb-3">
+                                <label class="form-label" for="locationSearch">Location</label>
+                                <div>
+                                    <mapbox-search-box id="locationSearch"
+                                        access-token="<%= process.env.MAPBOX_TOKEN %>" proximity="0,0"
+                                        placeholder="<%=site.locationInfo.properties.name %>"
+                                        value="<%=site.locationInfo%>"></mapbox-search-box>
+                                </div>
+                                <input class="form-control" type="hidden" id="location" name="location"
+                                    value="<%=JSON.stringify(site.locationInfo)%>" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please select a location.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" type="text" id="description" name="description"
+                                    value="<%=site.description%>" minlength="3" maxlength="300" rows="10"
+                                    required><%=site.description%></textarea>
+                                <div class=" valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    description must be 3-300 characters
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="images">Upload More Images:</label>
+                                <input type="file" id="images" name="images" accept="image/png, image/jpeg, image/jpg"
+                                    multiple />
+                                <div class=" valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    At most 5 images
+                                </div>
+                            </div>
+
+                            <br>
+                            <hr>
+                            <p>Delete Images</p>
+
+                            <div class="container">
+                                <div class="row g-2">
+                                    <% site.image.forEach((el, index)=> { %>
+                                        <div class="col-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="image_<%= index %>"
+                                                    name="selectedImages" value="<%= el.public_id%>">
+                                                <label class="form-check-label" for="image_<%= index %>">
+                                                    <%=el.imageName%>
+                                                </label>
+                                            </div>
+                                            <div class="card mb-4">
+                                                <img src="<%= el.imageUrl %>" class="img-thumbnail"
+                                                    alt="<%= el.imageName %>">
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                </div>
+                            </div>
+
+                            <br>
+                            <hr>
+                            <div class=" d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="/locations/<%=site._id%>" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </form>
                     </div>
                 </div>
-
-                <br>
-                <hr>
-                <div class=" d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                    <a href="/locations/<%=site._id%>" class="btn btn-danger">Cancel</a>
+            </div>
+            <!-- Column 3: Portrait Image -->
+            <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="info-image-container">
                 </div>
-            </form>
-        </section>
-    </main>
+            </div>
+        </div>
+    </section>
+
+    <!--Custom-->
+    <script id="search-js" defer src="https://api.mapbox.com/search-js/v1.0.0-beta.21/web.js"></script>
+    <script src="/javascripts/checkFormBootstrap.js"></script>
+    <script src="/javascripts/imageFormCheck.js"></script>
+    <script src="/javascripts/stringifyQueryString.js"></script>

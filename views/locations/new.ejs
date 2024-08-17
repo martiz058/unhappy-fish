@@ -1,68 +1,94 @@
 <% layout('layouts/boilerplate')%>
-    <main id="main" class="m-5">
-        <section class="card" style="width: 60%; margin: 0 auto;">
-            <h3 class=" card-header text-center">Uplaod New Images</h3>
-            <form class="needs-validation m-4" action="/locations" method="post" enctype="multipart/form-data"
-                novalidate>
-                <div class="mb-3">
-                    <label class="form-label" for="siteName">Site Name</label>
-                    <input class="form-control" type="text" id="siteName" name="siteName" placeholder="Site Name"
-                        minlength="3" maxlength="30" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Site Name must be 3-30 characters
-                    </div>
+    <section id="main">
+        <div class="row">
+            <!-- Column 1: Portrait Image -->
+            <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="info-image-container">
                 </div>
+            </div>
+            <!-- Column 2: Register Form -->
+            <div class="col-lg-6 col-md-4 col-sm-12">
+                <div class="card m-5" style="border-radius: 20px;">
+                    <div class="card-header text-center pt-3">
+                        <h3>Uplaod New Location </h3>
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation m-4" action="/locations" method="post"
+                            enctype="multipart/form-data" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="siteName">Site Name</label>
+                                <input class="form-control" type="text" id="siteName" name="siteName"
+                                    placeholder="Site Name" minlength="3" maxlength="30" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Site Name must be 3-30 characters
+                                </div>
+                            </div>
 
-                <!--UI Error Here-->
-                <div class="mb-3">
-                    <label class="form-label" for="locationSearch">Location</label>
-                    <div>
-                        <mapbox-search-box id="locationSearch" access-token="<%= process.env.MAPBOX_TOKEN %>"
-                            proximity="0,0"></mapbox-search-box>
-                    </div>
-                    <input class="form-control" type="hidden" id="location" name="location" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please select a location.
-                    </div>
-                </div>
+                            <!--UI Error Here-->
+                            <div class="mb-3">
+                                <label class="form-label" for="locationSearch">Location</label>
+                                <div>
+                                    <mapbox-search-box id="locationSearch"
+                                        access-token="<%= process.env.MAPBOX_TOKEN %>"
+                                        proximity="0,0"></mapbox-search-box>
+                                </div>
+                                <input class="form-control" type="hidden" id="location" name="location" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please select a location.
+                                </div>
+                            </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="description"
-                        placeholder="Description" minlength="3" maxlength="300" required></textarea>
-                    <div class=" valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        description must be 3-300 characters
-                    </div>
-                </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" type="text" id="description" name="description"
+                                    placeholder="Description" minlength="3" maxlength="300" required></textarea>
+                                <div class=" valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    description must be 3-300 characters
+                                </div>
+                            </div>
 
-                <div class="mb-3">
-                    <p>Upload Images:</p>
-                    <label for="images"></label>
-                    <input type="file" id="images" name="images" accept="image/png, image/jpeg, image/jpg" multiple
-                        required />
-                    <div class=" valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        At most 5 images
-                    </div>
-                </div>
+                            <div class="mb-3">
+                                <p>Upload Images:</p>
+                                <label for="images"></label>
+                                <input type="file" id="images" name="images" accept="image/png, image/jpeg, image/jpg"
+                                    multiple required />
+                                <div class=" valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    At most 5 images
+                                </div>
+                            </div>
 
-                <br>
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
-                    <a href="/locations" class="btn btn-danger">Cancel</a>
+                            <br>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+                                <a href="/locations" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </form>
-        </section>
-    </main>
+            </div>
+            <!-- Column 3: Portrait Image -->
+            <div class="col-lg-3 col-md-4 col-sm-12 text-center">
+                <div class="info-image-container">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Custom-->
+    <script id="search-js" defer src="https://api.mapbox.com/search-js/v1.0.0-beta.21/web.js"></script>
+    <script src="/javascripts/checkFormBootstrap.js"></script>
+    <script src="/javascripts/imageFormCheck.js"></script>
+    <script src="/javascripts/stringifyQueryString.js"></script>
