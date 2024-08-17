@@ -1,77 +1,133 @@
-<% layout('layouts/boilerplate')%>
-    <main id="main">
-        <!--ShowCase-->
-        <section id="showcase" class="container my-5">
-            <div class="d-flex flex-column align-items-center mt-5">
-                <h1>
-                    <b>User Stories</b>
-                </h1>
+<% layout('layouts/boilerplate') %>
+    <section id="main" class="welcome-container">
+        <div class="row image-row">
+            <div class="col-2">
+                <img src="/data/images/fish-1.png" class="icon-image" alt="Image 1">
             </div>
+            <div class="col-2">
+                <img src="/data/images/fish-3.png" class="icon-image" alt="Image 2">
+            </div>
+            <div class="col-2">
+                <img src="/data/images/fish-4.png" class="icon-image" alt="Image 3">
+            </div>
+            <div class="col-2">
+                <img src="/data/images/fish-2.png" class="icon-image" alt="Image 4">
+            </div>
+            <div class="col-2">
+                <img src="/data/images/fish-0.png" class="icon-image" alt="Image 5">
+            </div>
+        </div>
+        <div class="row welcome-message">
+            <h1>Welcome to our shared <b>Stories</b>, where you can read interseing stories from our users
+            </h1>
+        </div>
+    </section>
 
-            <!--Issue with small screens-->
-            <div class="container">
-                <div class="row">
-                    <% for(let i=0; i < 6; i++) {%>
-                        <div class="col-md-2">
-                            <img class="myLogo-size" src="/data/images/fish-0.png" alt="Logo">
-                        </div>
-                        <%}%>
-                </div>
-                <hr>
-        </section>
+    <section class="section-divider-two">
+        <img src="/data/images/fish-3.png" alt="Image 1">
+        <img src="/data/images/fish-1.png" alt="Image 2">
+        <img src="/data/images/fish-5.png" alt="Image 3">
+    </section>
 
-        <section class="container">
-            <% for(let i=0; i < stories.length; i++){%>
-                <section class="myContainer">
-                    <div class="row mt-3">
-                        <div class="mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%=stories[i].storyName %>
-                                </h5>
-                                <p class="card-text">
-                                    <%= stories[i].description %>
+    <!-- storiesGallery -->
+    <section id="storiesGallery" class="container-one">
+        <div class="d-flex flex-column align-items-center">
+            <h1><b>StoryCenter</b></h1>
+        </div>
+        <hr>
+        <div class="row stories-content">
+
+            <% stories.forEach((story, index)=> { %>
+                <div class="col-12 mb-4">
+                    <% if (index % 2===0) { %>
+                        <!-- Card 1 -->
+                        <div class="story-card d-flex flex-column flex-md-row">
+                            <div class="story-card-image">
+                                <img src="/data/images/fish-0.png" alt="Story Image">
+                            </div>
+                            <div class="story-card-content">
+                                <h3 class="common-card-title">
+                                    <%= story.storyName %>
+                                </h3>
+                                <hr>
+                                <p class="common-card-text">
+                                    <%= story.description %>
                                 </p>
+                                <div class="common-card-footer">
+                                    <span>
+                                        <%= story.author %>
+                                    </span> | <span>
+                                        <%= story.date %>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </section>
-                <%}%>
-        </section>
-
-        <!--Pagination-->
-        <section class="mt-3" aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <% if (currentPage <=1) { %>
-                        <a class="page-link disabled">Previous</a>
                         <% } else { %>
-                            <a class="page-link" href="/locations?page=<%= currentPage - 1 %>">Previous</a>
+                            <!-- Card 2 -->
+                            <div class="story-card d-flex flex-column flex-md-row-reverse">
+                                <div class="story-card-image">
+                                    <img src="/data/images/fish-2.png" alt="Story Image">
+                                </div>
+                                <div class="story-card-content">
+                                    <h3 class="common-card-title">
+                                        <%= story.storyName %>
+                                    </h3>
+                                    <hr>
+                                    <p class="common-card-text">
+                                        <%= story.description %>
+                                    </p>
+                                    <div class="common-card-footer">
+                                        <span>
+                                            <%= story.author %>
+                                        </span> | <span>
+                                            <%= story.date %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <% } %>
-                </li>
+                </div>
+                <% }); %>
+        </div>
+    </section>
 
-                <% for (let index=1; index <=totalPages; index++) { %>
-                    <li class="page-item" aria-current="page">
-                        <% if (currentPage===index) { %>
-                            <a class="page-link active" href="/locations?page=<%= index %>">
+    <section class="section-divider-one">
+        <img src="/data/images/fish-1.png" alt="Image 1">
+        <img src="/data/images/fish-5.png" alt="Image 2">
+        <img src="/data/images/fish-3.png" alt="Image 3">
+    </section>
+
+    <!--Pagination-->
+    <section class="container-two" aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <% if (currentPage <=1) { %>
+                    <a class="page-link disabled">Previous</a>
+                    <% } else { %>
+                        <a class="page-link" href="/locations?page=<%= currentPage - 1 %>">Previous</a>
+                        <% } %>
+            </li>
+
+            <% for (let index=1; index <=totalPages; index++) { %>
+                <li class="page-item" aria-current="page">
+                    <% if (currentPage===index) { %>
+                        <a class="page-link active" href="/locations?page=<%= index %>">
+                            <%= index %>
+                        </a>
+                        <% } else { %>
+                            <a class="page-link" href="/locations?page=<%= index %>">
                                 <%= index %>
                             </a>
+                            <% } %>
+                </li>
+                <% } %>
+
+                    <li class="page-item">
+                        <% if (currentPage>= totalPages) { %>
+                            <a class="page-link disabled" href="#">Next</a>
                             <% } else { %>
-                                <a class="page-link" href="/locations?page=<%= index %>">
-                                    <%= index %>
-                                </a>
+                                <a class="page-link" href="/locations?page=<%= currentPage + 1 %>">Next</a>
                                 <% } %>
                     </li>
-                    <% } %>
-
-                        <li class="page-item">
-                            <% if (currentPage>= totalPages) { %>
-                                <a class="page-link disabled" href="#">Next</a>
-                                <% } else { %>
-                                    <a class="page-link" href="/locations?page=<%= currentPage + 1 %>">Next</a>
-                                    <% } %>
-                        </li>
-            </ul>
-        </section>
-    </main>
+        </ul>
+    </section>

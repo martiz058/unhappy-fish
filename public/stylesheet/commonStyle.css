@@ -19,12 +19,13 @@ html {
 .common-card-text {
     font-size: 1em;
     margin: 10px 0;
+    line-height: 2;
 }
 
 .common-card-footer {
     font-size: 0.9em;
     margin: 10px 0;
-    color: lightgray;
+    color: #666;
 }
 
 /* Container Styling */
@@ -491,4 +492,73 @@ html {
     padding-right: 15px;
     margin-bottom: 30px;
     /* Add space between rows */
+}
+
+/* Story Card Styling */
+.story-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    /* Default light shade of white */
+    display: flex;
+    flex-direction: row;
+    /* Default layout for larger screens */
+}
+
+.story-card:nth-of-type(2) {
+    background-color: #f1f1f1;
+    /* Slightly darker shade for alternating effect */
+}
+
+.story-card-image {
+    width: 25%;
+    /* 1/4 of the row */
+    /* Light grey background for image container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    /* Fixed height for the image container */
+    overflow: hidden;
+    /* Ensures image does not overflow */
+}
+
+.story-card-image img {
+    width: 100%;
+    /* Adjust to fill the width of the container */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+.story-card-content {
+    width: 75%;
+    /* 3/4 of the row */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+}
+
+.story-card-content h3 {
+    margin-top: 0;
+}
+
+.story-card-footer {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .story-card {
+        flex-direction: row;
+        /* Use row layout for larger screens */
+    }
+
+    .story-card:nth-of-type(even) {
+        flex-direction: row-reverse;
+        /* Reverse layout for alternating cards */
+    }
 }
