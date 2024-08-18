@@ -6,7 +6,7 @@ const currentDate = new Date();
 
 module.exports.getIndex = async (req, res) => {
     // Pagination
-    const itemsPerPage = 9;
+    const itemsPerPage = 6;
 
     const totalItems = await StoryModel.countDocuments({});
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -35,8 +35,7 @@ module.exports.postStory = async (req, res) => {
     const newStory = new StoryModel(req.storyInfo);
     await newStory.save();
 
-    // Error flash going to locations page
-    req.flash('success', `${newStory.storyName} has been uploaded`);
+    req.flash('success', `${newStory.name} has been uploaded`);
     res.redirect('/stories'); //${newSite._id}`);
 };
 

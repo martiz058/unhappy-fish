@@ -140,14 +140,14 @@ const homeRoutes = require('./assets/routes/homeRoutes');
 const userRoutes = require('./assets/routes/userRoutes');
 const locationRoutes = require('./assets/routes/locationRoutes');
 const reviewRoutes = require('./assets/routes/reviewRoutes');
-const storiesRoutes = require('./assets/routes/storiesRoutes');
+const storyRoutes = require('./assets/routes/storyRoutes');
 const manualRoutes = require('./assets/routes/manualRoutes');
 
 app.use('/', homeRoutes);
 app.use('/', userRoutes);
 app.use('/locations', locationRoutes);
 app.use('/locations/:id/reviews', reviewRoutes);
-app.use('/stories', storiesRoutes);
+app.use('/stories', storyRoutes);
 app.use('/manuals', manualRoutes);
 
 // Page not Found

@@ -23,8 +23,8 @@ const SiteSchema = joi.object({
 }).required();
 
 const StorySchema = joi.object({
-    storyName: joi.string().min(3).max(100).trim().required(),
-    description: joi.string().min(3).max(2000).trim().required()
+    name: joi.string().min(3).max(50).trim().required(),
+    textBody: joi.string().min(3).max(5000).trim().required()
 }).required();
 
 const ReviewSchema = joi.object({
