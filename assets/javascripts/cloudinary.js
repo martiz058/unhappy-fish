@@ -39,8 +39,8 @@ async function uploadImages(uploadfiles, deleteImages = null) {
                         public_id: filename
                     });
                     return {
-                        imageUrl: uploadResult.secure_url,
-                        imageName: originalname,
+                        name: originalname,
+                        url: uploadResult.secure_url,
                         public_id: filename
                     };
                 } catch {

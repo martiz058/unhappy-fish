@@ -84,12 +84,11 @@
                                                 <input class="form-check-input" type="checkbox" id="image_<%= index %>"
                                                     name="selectedImages" value="<%= el.public_id%>">
                                                 <label class="form-check-label" for="image_<%= index %>">
-                                                    <%=el.imageName%>
+                                                    <%=el.name%>
                                                 </label>
                                             </div>
                                             <div class="card mb-4">
-                                                <img src="<%= el.imageUrl %>" class="img-thumbnail"
-                                                    alt="<%= el.imageName %>">
+                                                <img src="<%= el.url %>" class="img-thumbnail" alt="<%= el.name %>">
                                             </div>
                                         </div>
                                         <% }) %>

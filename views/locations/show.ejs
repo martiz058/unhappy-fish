@@ -21,16 +21,6 @@
     <link rel="stylesheet" href="/stylesheet/heroStyle.css">
     <link rel=" stylesheet" href="/stylesheet/ourFeaturesStyle.css">
     <link rel="stylesheet" href="/stylesheet/footerStyle.css">
-
-    <!--JS possible Issue-->
-    <section>
-        <% function getRandomImage() { const max=imageUrls.length; const image=imageUrls[Math.floor(Math.random() *
-            (max))]; return image; } %>
-
-            <% const imageUrls=[ "/data/images/fish-0.png" , "/data/images/fish-1.png" , "/data/images/fish-2.png"
-                , "/data/images/fish-3.png" , "/data/images/fish-4.png" , "/data/images/fish-5.png"
-                , "/data/images/fish-6.png" , "/data/images/fish-7.png" , ]; %>
-    </section>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -59,8 +49,7 @@
                             <% } else { %>
                                 <% site.image.forEach((el, index)=> { %>
                                     <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                                        <img src="<%=el.imageUrl%>" class="d-block img-fluid mx-auto"
-                                            alt="<%=el.imageName%>">
+                                        <img src="<%=el.url%>" class="d-block img-fluid mx-auto" alt="<%=el.name%>">
                                     </div>
                                     <% }) %>
                                         <% } %>

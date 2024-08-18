@@ -31,8 +31,8 @@ const GeoSchema = new mongoose.Schema({
 });
 
 const ImageSchema = new mongoose.Schema({
-    imageUrl: String,
-    imageName: String,
+    name: String,
+    url: String,
     public_id: String
 });
 
