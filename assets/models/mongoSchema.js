@@ -87,8 +87,8 @@ const StorySchema = new mongoose.Schema({
         ref: 'user_collection',
         required: true
     },
-    storyName: String,
-    description: String,
+    name: String,
+    textBody: String,
     author: String,
     date: String,
 })

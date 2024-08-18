@@ -3,8 +3,8 @@ const { StoryJoiModel } = require('../models/joiSchema');
 
 async function validateStory(req, res, next) {
     const storyInfo = {
-        storyName: req.body.storyName,
-        description: req.body.description,
+        storyName: req.body.name,
+        description: req.body.textBody,
     }
 
     const { error } = StoryJoiModel.validate(storyInfo);
