@@ -29,7 +29,7 @@ const StorySchema = joi.object({
 
 const ReviewSchema = joi.object({
     rating: joi.number().min(1).max(5).required(),
-    reviewText: joi.string().min(3).max(300).required()
+    textBody: joi.string().min(3).max(300).required()
 
 }).required()
 

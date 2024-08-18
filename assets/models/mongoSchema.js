@@ -41,7 +41,7 @@ const ReviewSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'site_collection'
     },
-    siteReviews: [{
+    reviewList: [{
         userID: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user_collection'
@@ -51,7 +51,7 @@ const ReviewSchema = new mongoose.Schema({
             minlength: 1,
             maxlength: 5,
         },
-        reviewText: {
+        textBody: {
             type: String,
             minlength: 3,
             maxlength: 300,

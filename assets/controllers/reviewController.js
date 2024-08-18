@@ -18,10 +18,10 @@ module.exports.postReview = async (req, res) => {
     const site = await SiteModel.findById(req.params.id);
     const review = await ReviewModel.findById(site.reviewID);
 
-    review.siteReviews.push(reviewInfo);
+    review.reviewList.push(reviewInfo);
 
     site.totalRating += reviewInfo.rating;
-    site.averageRating = getAverageRating(site.totalRating, review.siteReviews.length);
+    site.averageRating = getAverageRating(site.totalRating, review.reviewList.length);
 
     await review.save();
     await site.save();
@@ -38,14 +38,14 @@ module.exports.deleteReview = async (req, res) => {
     const review = await ReviewModel.findByIdAndUpdate(
         site.reviewID,
         {
-            $pull: { siteReviews: { _id: reviewId } }
+            $pull: { reviewList: { _id: reviewId } }
         },
         { new: true }
     );
 
     //Calulate rating
     site.totalRating += rating;
-    site.averageRating = getAverageRating(site.totalRating, review.siteReviews.length);
+    site.averageRating = getAverageRating(site.totalRating, review.reviewList.length);
 
     // await review.save();
     await site.save();

@@ -39,7 +39,7 @@ async function reviewAuthorize(req, res, next) {
         return res.redirect(`/locations/${req.params.id}` || '/locations');
     }
 
-    const review = reviewDocument.siteReviews.id(req.params.reviewId);
+    const review = reviewDocument.reviewList.id(req.params.reviewId);
     if (!review) {
         req.flash('error', 'Review not found');
         return res.redirect(`/locations/${req.params.id}` || '/locations');

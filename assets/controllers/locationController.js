@@ -58,7 +58,7 @@ module.exports.getSiteID = async (req, res) => {
             return res.redirect('/locations');
         }
         const review = await findOrCreateReview(site);
-        const reviews = review.siteReviews;
+        const reviews = review.reviewList;
 
         let editFlag = false;
         let reviewFlag = false;
