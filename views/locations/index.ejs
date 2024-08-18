@@ -61,24 +61,24 @@
                 <% } %>
                     <div class="col-md-6 mb-4">
                         <div class="landscape-image-card">
-                            <% if (location.image.length==0) { %>
+                            <% if (location.imageList.length==0) { %>
                                 <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
                                     class="card-img-top" alt="No Image">
                                 <% } else { %>
-                                    <img src="<%= location.image[0].url %>" alt="<%= location.image[0].name %>">
+                                    <img src="<%= location.imageList[0].url %>" alt="<%= location.imageList[0].name %>">
                                     <% } %>
                                         <div class="overlay"></div>
                                         <div class="landscape-image-card-container">
                                             <div class="common-card-title">
-                                                <%= location.siteName %>
+                                                <%= location.name %>
                                             </div>
                                             <div class="common-card-subtitle">
-                                                <%= location.locationInfo.properties.place_formatted %>
+                                                <%= location.geoJson.properties.place_formatted %>
                                             </div>
                                             <div class="common-card-text">
-                                                <%= location.description.length> 75 ?
-                                                    location.description.substring(0, 75) + '...' :
-                                                    location.description %>
+                                                <%= location.textBody.length> 75 ?
+                                                    location.textBody.substring(0, 75) + '...' :
+                                                    location.textBody %>
                                             </div>
                                             <a href="/locations/<%= location._id %>" class="btn btn-primary">Read
                                                 More</a>

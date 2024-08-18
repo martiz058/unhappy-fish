@@ -17,14 +17,14 @@
                             enctype="multipart/form-data" novalidate>
 
                             <div class="mb-3">
-                                <label class="form-label" for="siteName">Site Name</label>
-                                <input class="form-control" type="text" id="siteName" name="siteName"
-                                    value="<%=site.siteName%>" minlength="3" maxlength="30" required>
+                                <label class="form-label" for="name">Site Name</label>
+                                <input class="form-control" type="text" id="name" name="name" value="<%=site.name%>"
+                                    minlength="3" maxlength="50" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                                 <div class="invalid-feedback">
-                                    Site must be 3-30 characters
+                                    Site must be 3-50 characters
                                 </div>
                             </div>
 
@@ -34,11 +34,11 @@
                                 <div>
                                     <mapbox-search-box id="locationSearch"
                                         access-token="<%= process.env.MAPBOX_TOKEN %>" proximity="0,0"
-                                        placeholder="<%=site.locationInfo.properties.name %>"
-                                        value="<%=site.locationInfo%>"></mapbox-search-box>
+                                        placeholder="<%=site.geoJson.properties.name %>"
+                                        value="<%=site.geoJson%>"></mapbox-search-box>
                                 </div>
-                                <input class="form-control" type="hidden" id="location" name="location"
-                                    value="<%=JSON.stringify(site.locationInfo)%>" required>
+                                <input class="form-control" type="hidden" id="geoJson" name="geoJson"
+                                    value="<%=JSON.stringify(site.geoJson)%>" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -48,15 +48,15 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" type="text" id="description" name="description"
-                                    value="<%=site.description%>" minlength="3" maxlength="300" rows="10"
-                                    required><%=site.description%></textarea>
+                                <label class="form-label" for="textBody">Description</label>
+                                <textarea class="form-control" type="text" id="textBody" name="textBody"
+                                    value="<%=site.textBody%>" minlength="3" maxlength="500" rows="10"
+                                    required><%=site.textBody%></textarea>
                                 <div class=" valid-feedback">
                                     Looks good!
                                 </div>
                                 <div class="invalid-feedback">
-                                    description must be 3-300 characters
+                                    description must be 3-500 characters
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@
 
                             <div class="container">
                                 <div class="row g-2">
-                                    <% site.image.forEach((el, index)=> { %>
+                                    <% site.imageList.forEach((el, index)=> { %>
                                         <div class="col-6">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="image_<%= index %>"

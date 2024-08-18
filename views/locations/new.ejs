@@ -16,43 +16,43 @@
                         <form class="needs-validation m-4" action="/locations" method="post"
                             enctype="multipart/form-data" novalidate>
                             <div class="mb-3">
-                                <label class="form-label" for="siteName">Site Name</label>
-                                <input class="form-control" type="text" id="siteName" name="siteName"
-                                    placeholder="Site Name" minlength="3" maxlength="30" required>
+                                <label class="form-label" for="name">Location Name</label>
+                                <input class="form-control" type="text" id="name" name="name"
+                                    placeholder="Location Name" minlength="3" maxlength="50" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                                 <div class="invalid-feedback">
-                                    Site Name must be 3-30 characters
+                                    Site Name must be 3-50 characters
                                 </div>
                             </div>
 
                             <!--UI Error Here-->
                             <div class="mb-3">
-                                <label class="form-label" for="locationSearch">Location</label>
+                                <label class="form-label" for="locationSearch">Address</label>
                                 <div>
                                     <mapbox-search-box id="locationSearch"
                                         access-token="<%= process.env.MAPBOX_TOKEN %>"
                                         proximity="0,0"></mapbox-search-box>
                                 </div>
-                                <input class="form-control" type="hidden" id="location" name="location" required>
+                                <input class="form-control" type="hidden" id="geoJson" name="geoJson" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                                 <div class="invalid-feedback">
-                                    Please select a location.
+                                    Please select a address.
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="description">Description</label>
-                                <textarea class="form-control" type="text" id="description" name="description"
-                                    placeholder="Description" minlength="3" maxlength="300" required></textarea>
+                                <label class="form-label" for="textBody">Description</label>
+                                <textarea class="form-control" type="text" id="textBody" name="textBody"
+                                    placeholder="Description" minlength="3" maxlength="500" required></textarea>
                                 <div class=" valid-feedback">
                                     Looks good!
                                 </div>
                                 <div class="invalid-feedback">
-                                    description must be 3-300 characters
+                                    Description must be 3-500 characters
                                 </div>
                             </div>
 

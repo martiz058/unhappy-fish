@@ -24,9 +24,9 @@ async function siteAuthorize(req, res, next) {
 
 async function validateSite(req, res, next) {
     const siteInfo = {
-        siteName: req.body.siteName,
-        description: req.body.description,
-        locationInfo: getCoordinates(req.body.location)
+        name: req.body.name,
+        textBody: req.body.textBody,
+        geoJson: getCoordinates(req.body.geoJson)
     }
 
     const { error } = SiteJoiModel.validate(siteInfo);

@@ -7,17 +7,17 @@ const UserSchema = joi.object({
 }).required();
 
 const SiteSchema = joi.object({
-    siteName: joi.string().min(3).max(300).trim().required(),
-    description: joi.string().min(3).max(300).trim().required(),
-    locationInfo: joi.object({
+    name: joi.string().min(3).max(500).trim().required(),
+    textBody: joi.string().min(3).max(500).trim().required(),
+    geoJson: joi.object({
         geometry: joi.object({
-            type: joi.string().min(3).max(300).trim().required(),
+            type: joi.string().min(3).max(500).trim().required(),
             coordinates: joi.array().items(joi.number()).required()
         }).required(),
         properties: joi.object({
-            name: joi.string().min(3).max(300).trim().required(),
-            place_formatted: joi.string().min(3).max(300).trim().required(),
-            full_address: joi.string().min(3).max(300).trim().required()
+            name: joi.string().min(3).max(500).trim().required(),
+            place_formatted: joi.string().min(3).max(500).trim().required(),
+            full_address: joi.string().min(3).max(500).trim().required()
         }).required()
     }).required()
 }).required();

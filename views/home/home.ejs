@@ -258,19 +258,20 @@
                         <div class="flip-card mb-4">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <% if (location.image.length==0) { %>
+                                    <% if (location.imageList.length==0) { %>
                                         <img
                                             src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png">
                                         <% } else { %>
-                                            <img src="<%=location.image[0].url %>" alt="<%=location.image[0].name %>">
+                                            <img src="<%=location.imageList[0].url %>"
+                                                alt="<%=location.imageList[0].name %>">
                                             <% } %>
                                 </div>
                                 <div class=" flip-card-back">
                                     <h1 class="common-card-title">
-                                        <%= location.siteName %>
+                                        <%= location.name %>
                                     </h1>
                                     <h2 class="common-card-subtitle">
-                                        <%= location.locationInfo.properties.place_formatted %>
+                                        <%= location.geoJson.properties.place_formatted %>
                                     </h2>
                                     <div>
                                         <% for( let index=1; index <=5; index++ ) { %>
@@ -285,7 +286,7 @@
                                                             </p>
                                     </div>
                                     <p class="common-card-footer">
-                                        <%=location.author%>
+                                        <%=location.username%>
                                     </p>
                                 </div>
                             </div>
@@ -334,7 +335,7 @@
                                 <%=story.textBody%>
                             </p>
                             <p class="drop-down-footer common-card-footer">
-                                <%=story.author%>
+                                <%=story.username%>
                             </p>
                         </div>
                     </div>

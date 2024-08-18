@@ -9,6 +9,6 @@ script.onload = function () {
 
     searchBox.addEventListener('retrieve', (e) => {
         const selectLocation = e.detail;
-        document.getElementById('location').value = JSON.stringify(selectLocation.features[0]);
+        document.getElementById('geoJson').value = JSON.stringify(selectLocation.features[0]);
     });
 }

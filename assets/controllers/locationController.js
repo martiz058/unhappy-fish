@@ -30,7 +30,7 @@ module.exports.getIndex = async (req, res) => {
 
 module.exports.postSite = async (req, res) => {
     req.siteInfo.userID = req.user._id;
-    req.siteInfo.author = req.user.username;
+    req.siteInfo.username = req.user.username;
     req.siteInfo.date = currentDate.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' });
     req.siteInfo.averageRating = 0;
     req.siteInfo.totalRating = 0;
@@ -38,11 +38,11 @@ module.exports.postSite = async (req, res) => {
     const newSite = new SiteModel(req.siteInfo);
 
     await findOrCreateReview(newSite);
-    newSite.image = await uploadImages(req.files);
+    newSite.imageList = await uploadImages(req.files);
 
     await newSite.save();
 
-    req.flash('success', `${newSite.siteName} has been uploaded`);
+    req.flash('success', `${newSite.name} has been uploaded`);
     res.redirect(`/locations/${newSite._id}`);
 };
 
@@ -93,10 +93,10 @@ module.exports.editSiteID = async (req, res) => {
         );
     }
 
-    updateSite.image.push(...addImages);
+    updateSite.imageList.push(...addImages);
     await updateSite.save();
 
-    req.flash('success', `${updateSite.siteName} has been updated`);
+    req.flash('success', `${updateSite.name} has been updated`);
     res.redirect(`/locations/${req.params.id}`);
 };
 

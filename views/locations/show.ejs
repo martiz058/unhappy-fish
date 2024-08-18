@@ -41,20 +41,20 @@
             <div class="card-header">
                 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" style="background-color: grey;">
-                        <% if (site.image.length===0) { %>
+                        <% if (site.imageList.length===0) { %>
                             <div class="carousel-item active">
                                 <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
                                     class="d-block img-fluid mx-auto" alt="No Image">
                             </div>
                             <% } else { %>
-                                <% site.image.forEach((el, index)=> { %>
+                                <% site.imageList.forEach((el, index)=> { %>
                                     <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
                                         <img src="<%=el.url%>" class="d-block img-fluid mx-auto" alt="<%=el.name%>">
                                     </div>
                                     <% }) %>
                                         <% } %>
                     </div>
-                    <% if (site.image.length>1) { %>
+                    <% if (site.imageList.length>1) { %>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -76,20 +76,20 @@
                     <div class="col-md-6 border-end">
                         <h5 class="card-title m-2">
                             <b>
-                                <%= site.siteName %>
+                                <%= site.name %>
                             </b>
                         </h5>
                         <h6 class="card-subtitle m-2 text-body-secondary">
                             <b>
-                                <%= site.locationInfo.properties.place_formatted %>
+                                <%= site.geoJson.properties.place_formatted %>
                             </b>
                         </h6>
                         <hr>
                         <p class="card-text">
-                            <%= site.description%>
+                            <%= site.textBody%>
                         </p>
                         <p class="blockquote-footer mt-1">
-                            <%=site.author%>
+                            <%=site.username%>
                         </p>
                         <div class=" d-flex justify-content-between me-auto">
                             <% if (editFlag) { %>
@@ -103,13 +103,13 @@
                     <!-- Map -->
                     <div class="col-md-5 mx-5">
                         <div id='map' data-map-token='<%= process.env.MAPBOX_TOKEN %>'
-                            data-coordinates='<%= JSON.stringify(site.locationInfo.geometry.coordinates) %>'
+                            data-coordinates='<%= JSON.stringify(site.geoJson.geometry.coordinates) %>'
                             style='width: 100%; height: 400px;'>
                         </div>
                         <div class="card-footer mt-4">
                             <p class="card-text">
                                 <small class="text-body-secondary">
-                                    <%= site.locationInfo.properties.full_address %>
+                                    <%= site.geoJson.properties.full_address %>
                                 </small>
                             </p>
                         </div>
@@ -133,7 +133,7 @@
                 <!-- Card header Total Rating-->
                 <div class="card-header">
                     <h5 class="mt-2">
-                        Reviews of <%= site.siteName %>
+                        Reviews of <%= site.name %>
                     </h5>
                     <hr>
                     <div>

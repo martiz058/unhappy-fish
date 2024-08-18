@@ -67,14 +67,14 @@ const SiteSchema = new mongoose.Schema({
         ref: 'user_collection',
         required: true
     },
-    siteName: String,
-    description: String,
-    author: String,
+    name: String,
+    textBody: String,
+    username: String,
     date: String,
     averageRating: Number,
     totalRating: Number,
-    locationInfo: GeoSchema,
-    image: [ImageSchema],
+    geoJson: GeoSchema,
+    imageList: [ImageSchema],
     reviewID: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'review_collection'
@@ -89,7 +89,7 @@ const StorySchema = new mongoose.Schema({
     },
     name: String,
     textBody: String,
-    author: String,
+    username: String,
     date: String,
 })
 //-------------------
