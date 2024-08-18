@@ -25,7 +25,7 @@ module.exports.getIndex = async (req, res) => {
         .skip(startIndex)
         .limit(itemsPerPage);
 
-    res.render('locations/index', { locations, totalPages, currentPage });
+    res.render('locations/locationIndex', { locations, totalPages, currentPage });
 };
 
 module.exports.postSite = async (req, res) => {
@@ -47,7 +47,7 @@ module.exports.postSite = async (req, res) => {
 };
 
 module.exports.getNewSiteForm = async (req, res) => {
-    res.render('locations/new');
+    res.render('locations/locationNew');
 };
 
 module.exports.getSiteID = async (req, res) => {
@@ -72,7 +72,7 @@ module.exports.getSiteID = async (req, res) => {
                 reviewFlag = false; // User cannot comment on their own site
             }
         }
-        res.render('locations/show', { site, reviews, editFlag, reviewFlag });
+        res.render('locations/locationShow', { site, reviews, editFlag, reviewFlag });
     } catch {
         req.flash('error', 'Site not found');
         return res.redirect('/locations');
@@ -110,5 +110,5 @@ module.exports.deleteSiteID = async (req, res) => {
 
 module.exports.getEditSiteForm = async (req, res) => {
     const site = await SiteModel.findById(req.params.id);
-    res.render('locations/edit', { site });
+    res.render('locations/locationEdit', { site });
 };

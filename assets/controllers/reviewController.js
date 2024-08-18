@@ -10,7 +10,7 @@ module.exports.postReview = async (req, res) => {
     const reviewInfo = {
         userID: req.user._id,
         rating: Number(req.body.rating),
-        reviewText: req.body.reviewText,
+        textBody: req.body.textBody,
         date: currentDate.toLocaleString(),
         username: req.user.username
     };
