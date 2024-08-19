@@ -8,7 +8,7 @@ const { findOrCreateReview } = require('../middleware/reviewMiddleware');
 
 module.exports.getIndex = async (req, res) => {
     // Pagination
-    const itemsPerPage = 9;
+    const itemsPerPage = 8;
 
     const totalItems = await SiteModel.countDocuments({});
     const totalPages = Math.ceil(totalItems / itemsPerPage);

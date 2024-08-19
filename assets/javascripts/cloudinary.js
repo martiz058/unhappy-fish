@@ -36,11 +36,20 @@ async function uploadImages(uploadfiles, deleteImages = null) {
                 const { path, filename, originalname } = file;
                 try {
                     const uploadResult = await cloudinary.uploader.upload(path, {
-                        public_id: filename
+                        public_id: filename,
+                        transformation: {
+                            quality: "auto",
+                            fetch_format: "auto"
+                        }
+                    });
+                    const optimizedUrl = cloudinary.url(uploadResult.public_id, {
+                        quality: "auto",
+                        fetch_format: "auto"
                     });
                     return {
                         name: originalname,
                         url: uploadResult.secure_url,
+                        optimizedUrl: optimizedUrl,
                         public_id: filename
                     };
                 } catch {

@@ -65,7 +65,8 @@
                                 <img src="https://res.cloudinary.com/doy9gjdfi/image/upload/v1713651633/samples/cloudinary-icon.png"
                                     class="card-img-top" alt="No Image">
                                 <% } else { %>
-                                    <img src="<%= location.imageList[0].url %>" alt="<%= location.imageList[0].name %>">
+                                    <img src="<%= location.imageList[0].optimizedUrl %>"
+                                        alt="<%= location.imageList[0].name %>">
                                     <% } %>
                                         <div class="overlay"></div>
                                         <div class="landscape-image-card-container">

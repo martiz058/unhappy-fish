@@ -33,6 +33,7 @@ const GeoSchema = new mongoose.Schema({
 const ImageSchema = new mongoose.Schema({
     name: String,
     url: String,
+    optimizedUrl: String,
     public_id: String
 });
 
